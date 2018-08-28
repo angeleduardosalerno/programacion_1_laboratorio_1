@@ -1,0 +1,212 @@
+CLASE 2
+
+WHILE LA CONDICION INICIA SIEMPRE TRUE Y EN LA CONDICION SE TIENEN Q CONVERTIR EN FALSE PARA QUE EL BUCLE NO SEA INFINITO...
+
+libreria stdlib sirve para pause y para limpiar la pantalla...
+
+"%d \ n" el n es para mostrarlos abajo como <br> 
+printf( "  %d\n", contador); va todo seguido...
+
+en do while es lo mismo, si la condicion de while es true en la condicion de arriba tiene que ser false alguna vez para salir del bucle
+OJO LA CONDICION DEL DO WHILE TERMINA EN ; SINO NO ANDA!
+
+int main()
+{
+    int contador=11;
+
+    do
+    {
+        contador --;
+        printf( "  %d\n", contador);
+
+    }
+    while (contador > 1);
+
+
+    DO WHILE SE USA PARA VALIDAR Y NO TENER QUE REPETIR LO MISMO ARRIBA Y EN LA CONDICION DEL WHILE OJOOOOOOOOO!!
+    AMBAS SE USAN CUANDO NO SE SABE LAS CANTIDAD DE REPETICIONES!
+    EN EL FOR SE DEFINE LAS CANTIDAD DE VECES...! DE ANTEMANO, EJ NO SE USA PARA INGRESE EL NUM HASTA QUE DESEE...OJOOOOOO...
+
+    EN FOR (;;) ES INFINITO POR QUE AL NO HABER CONDICION VA A SER SIEMPRE TRUE...X ESO EL FOR ES INFINITO...
+
+    PARA CARACTERES...(d=='s') OJJJJJJJJJJJO CARACTERES....
+
+    d=getc(stdin); = A SCANF () PERO NO HACE FALTA QUE EL USUARIO TOQUE ENTER...
+
+    getc(stdin)!='\x1B' ....'\x1B' ESTO ES LA TECLA ESCAPE...para salir del programa solo tocando la tecla esc... 1B ESTA EN EXA ES IGUAL A 27 EN DECIMAL QUE ES LA TECLA ESC EN ASCII OJOOOO
+
+    # define ESC 27...esc en el codigo ascii es 27
+
+    OJJJJJJJJO EN SWITCH DEL C NO SE PUEDE HACER CON UNA CADENA DE CARACTERES,,,,SOLO SE HACE CON ENTEROS Y CON CHAR DE UNA LETRA 's'
+    NO HAY CADENAS DE CARACTERES POR QUE LAS HAY QUE CONSTRUIR, NO SE PUEDE HACER SWITCH CON CADENA DE CARACTERES EN C...OJJJJJJO, SOLO CON ENTEROS (NO SE PUEDE TAMPOCO REALES) Y UN SOLO CARACTER CON COMILLAS SIMPLES...
+
+    LA DIFERENCIA ENTRE EL CONTADOR Y EL ACUMULADOR ES QUE EN EL PRIMERO SE LE SUMA UNA CONSTANTE...Y EN EL SEGUNDO SE LE SUMA UNA VARIABLE...
+
+    SUPER IMPORTANTE, PARA CALCULAR LOS PROMEDIOS QUE NO HAGA MAL EL RESULTADO, EL PROMEDIO SIEMPRE TIENE Q SER FLOAT POR QUE LOS PROMEDIOS SE GUARDAN CON , YO HABIA HECHO UNA CUENTA QUE ERA DE ENTEROS Y ESTABA OK 10/3 PERO DABA MAL POR ESA LOGICA, PARA HACERLO OK SE HACE:
+
+    1) DEFINIR LAS VARIABLES QUE PUEDEN DAR CON COMA COMO FLOAT (EN ESTE CASO PROMEDIO)
+
+    2) EN DONDE SE HACE EL CALCULO DEL PROMEDIO, AL SER LAS OTRAS DOS VARIABLES ENTERAS NO VA A ANDAR YA QUE EL ESPACIO RESERVADO EN MEMORIA ES MAS CHICO Y NO GUARDA TODO LOS NUMEROS, PARA ARREGLAR ESTO SE USA: promedio= (float) acumulador/contador; y despues el print f del final lleva %f...
+    ESTO LE DECIS QUE RESERVE UN ESPACIO FLOAT EN MEMORIA EN LA PARTE DE LOS ENTEROS
+
+    OJOOOOOOOOOOO SUPER IMP X ESTO NO ME DABAN LOS EJ...
+
+    int main()
+{
+    int edad, contador, acumulador=0;
+    float promedio;
+
+    for (contador=0; contador < 3; contador++)
+    {
+        printf("Ingrese la edad: ");
+        scanf("%d",&edad);
+        acumulador= acumulador + edad;
+    }
+    promedio=(float)acumulador / contador;
+    printf("El promedio es: %f", promedio);
+
+
+    return 0;
+
+    ME HABIA EQUIVOCADO EN QUE EL ACUMULADOR NO ESTABA EN = 0 Y EN LO DE LA FALTA DEL & SCANF
+
+    PARA SACAR MAXIMOS Y MINIMOS:
+
+    INCLUIR LIBRERIAS STDIO, STLIB Y DEFINIR LA TECLA DE ESCAPE CON EL SIMBOLO ADELANTE DEFINE ESC 27
+
+    PARA QUE ANDE EL ESCAPE DEFINIR VARIABLE TIPO CHAR, DSP DO WHILE, EN CONDICION (SEGUIR != ESC)
+    OJOOO VERRRR
+    EN LA CONDICION DEL DO WHILE LLEVA LA PREGUNTA A LA RESPUESTA!
+
+    BANDERA EJ CORREO 2 VALORES 1 O 0 HAY ALGO O NO HAY NADA, NO ES UN CONTADOR, SIRVE PARA TOMAR UNA DECISION O NO...
+
+    system("cls"); //limpia la pantalla cd vez q se ejecuta while OJOOOO
+
+    
+
+
+    EJEMPLO ESPECTACULAR DE MAXIMO Y MINIMOS:
+
+    HECHO CON BANDERA Y COSAS PARTICULARES DE C, SALIR CON ESCAPE, LIMPIAR LA PANTALLA...VER
+
+    ojo ver como se hace en c lo de desea continuar ingresando numero en whike
+
+    OJOOOO LOS DEFINE VAN ABAJO DE LOS INCLUDE!!!SUPER IMP, SINO NO ANDA!
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>//para usar la funcion getch.
+#define ESC 27
+
+
+int main()
+{
+    char respuesta;
+    int numero, maximo, minimo, flag=0;
+
+    do
+    {
+        system("cls"); //limpia la pantalla cd vez q se ejecuta while
+        printf( "Ingrese su numero: ");
+        scanf( "%d", &numero);
+
+
+        if (flag ==0) // si pones contador te empieza a sumar sin sentido, la bandera no suma...
+        {
+            maximo=numero;
+            minimo=numero;
+            flag=1; //le cambias el valor para que no se vuelva a ejecutar la bandera, sino se repite siempre!
+        }
+        if (numero>maximo) //recomendo no hacerlo con el else if...cuando haces else, no es river boca, es boca y todos los clubre...es todo lo que no forma parte
+        {
+            maximo=numero;
+        }
+        if ( numero<minimo) // no se pone el else if se hace con if
+        {
+            minimo=numero;
+        }
+
+        printf ("Presione ESC para salir, cualquier otra tecla para continuar...");
+        respuesta=getch(); //esta funcion es para no tocar enter, sino scanf %e, &respuesta     ojoooooo // para usar el getch hay que usar coneo.h
+
+    }while(respuesta!=ESC);
+
+    printf("El maximo es: %d \n El minimo es: %d \n", maximo, minimo);
+
+    return 0;
+}
+	
+	SIEMPRE ANTES DE UN SCANF VA FFLASH....SI ES PARA CARACTERES...(EJ ENTER ES UN CARACTER)
+
+	fflush(stdin), tiene q ir arriba del scan f, sino scanf %e, &respuesta     ojoooooo // para usar el getch hay que usar coneo.h, fflush(stdin) quita el enter del buffer, ej cola de supermercado, por que se superponen dos variables tipo char, y solo se usa cuando lo que tengo siguiente es un %c o %s, para enteros el enter no afecta en nada...
+
+
+
+	OJOOOO EL PROGRAMA REDUCIDO PARA SACAR MAXIMOS Y MINIMOS:
+
+	ES MAXIMOS Y MINIMOS ANTERIOR HECHO RESUMIDO...
+
+	IF(FLAG==0 || NRO>MAX) 
+	{
+		MAX=NRO;	
+	}
+	IF(FLAG==0 || NRO<MIN) 
+	{
+		MIN=NRO;
+		FLAG=1;	
+	}
+
+	COMO ES UNA O LOGICA CON UNO Q SEA ERDADERO SE CUMPLE, ENTRA DESPUES ACA
+
+
+
+	FUNCIONES:
+
+	RESUELVEN ALGO ESPECIFICO, PUEDE O NO RECIBIR UN PARAMETRO Y RETORNAR O NO UN VALOR
+
+	FUNCIONES: RESPONDEN 3 PREGUNTAS:
+
+	!) ¿QUE HACE? ¿PARA Q TENGO Q HACER LA FUNCION?EJ PRINT F (IMPRIME POR PANTALLA)
+
+	2) ¿QUE DEVUELVE O QUE RETORNA? ¿NECESITO QUE DEVUELVA UN VALOR O NO? 
+
+	3) ¿QUE RECIBE? PRINT F RECIBE UNA CADENA DE CARACTERES BASICAMENTE...
+
+	4) ESA FUNCION SE VA A REPETIR? EJ LA FUNCION PRINT F YA ESTA INVENTADA, NO HAY QUE ESCRIBIR TODO EL CODIGO OTRA VEZ
+
+	UNA FUNCION TIENE, 
+	UN VALOR DE RETORNO (CON SU TIPO) NOMBRE () 
+
+	EJ INT MAIN()
+
+	
+	FUNCIONES PARA SUMAR OJO!
+	PARA SUMAR
+
+	INT SUMA(INT OPERANDO1, INT OPERANDO2) (ESTO SE CONOCE COMO FIRMA
+	INGRESA 2 ENTEROS Y DEVUELVE UNO)
+	{
+	INT RESULTADO;
+	RESULTADO=OPERANDO1+OPERANDO2;
+	RETURN RESULTADO;
+	} (ESTE ES EL CUERPO DE LA FUNCION)
+
+	PARA USARLA:
+
+	INT SUMA (INT, INT);
+	INT MAIN()
+	{
+		INT NUM1, NUM2, RESULTADO, (POR QUE PERTENECEN A MAIN) 
+		PRINTF("OP1")
+
+		ETC, VER FOTOS...
+	}
+
+
+
+
+
+
+	HACER TP HACER CALCULADORA
+
+
