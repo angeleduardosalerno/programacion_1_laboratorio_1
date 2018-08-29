@@ -1,0 +1,180 @@
+CLASE 3
+
+FUNCIONES:
+
+NOMBRE DE LA FUNCION HASTA LOS PARENTESIS = FIRMA...
+
+PARAMETRO O ARGUMENTO DE LA FUNCION ES LO QUE VA ENTRE () EJ MAIN()...ESTE ES EL PARAMETRO..., LOS DATOS QUE RECIBE...
+
+LA FUNCION NO PUEDE TENER EL MISMO NOMBRE QUE LAS 32 PALABRAS RESERVADAS DE C
+
+FORMATO DE TIPO DE DATO = MASCARA (%d)
+
+scanf recibe 2 parametros ( , ) separados x comas...
+
+el sentido de la funcion es tener codigo probado que ya sabes que anda ok, para no andar escribiendo lo mismo varias veces!
+es lo que pasa cuando nos usamos printf o scanf por ejemplo...
+
+SI EL PROBLEMA ESTA EN LA FUNCION UNO SABE DONDE TIENE Q IR PARA ARREGLAR ESE MODULO DETERMINADO...
+MODULO= DET FUNCION...
+
+
+INDEPENDENCIA DEL CODIGO= NO HACE FALTA ESCRIBIR TODO LO QUE HACE LA FUNCION OTRA VEZ...SE USA LA FUNCION Y LISTO...
+
+
+PREGUNTAS PARA ANTES DE REALIZAR UNA FUNCION:
+
+SUMA 2 NUMEROS
+
+DEVUELVE UNA VARIABLE COMO RESULTADO
+
+Y PARA HACERLO TIENEN Q INGRESAR 2 NUMEROS
+
+(es int por que es el dato que la funcion devuelve) int suma (op1, op2)  esto se llama PROTOTIPO, DECLARACION O FIRMA DE LA FUNCION...
+
+LA FUNCION SE USA PARA EVITAR QUE ESCRIBAS SIEMPRE LO MISMO...
+
+CUANDO USO LA FUNCION SE USAN LAS VARIABLES DEFINIDAS EN MAIN, POR ESO EN EL DESARROLLO DE LA FUNCION ES INDISTINTO EL NOMBRE Q SE LE PONGA A LAS VARIABLES, SIEMPRE VAN A SER DIFERENTES LAS VARIABLES...
+
+O SEA: LO DE MAIN ES INDEPENDIENTE DEL DESARROLLO DE LA FUNCION...
+
+EL DESARROLLO SE PONE ABAJO PARA QUE TOME LOS VALORES DE MAIN QUE VIENEN DESDE ARRIBA......OJJJJO!!!
+
+LLAMAR A LA FUNCION SUMA ES CUANDO EN MAIN PONES RESULTADO= SUMA()    OJOOOOOOO LLAMADO A LA FUNCION SUMA!
+Y HASTA QUE NO SE RESUELVA EL PROGRAMA EN MAIN SE DETIENE....Y SE EMPIEZA A EJECUTAR LA FUNCION SUMA!
+
+CADA VARIABLE DETERMINA O RESERVA UN ESPACIO EN LA DIRECCION DE MEMORIA....
+EL ESPACIO DE DATOS EN MEMORIA PUEDE QUEDAR CON LOS DATOS ANTERIORES...ESO SIGNIFICA QUE LA MEMORIA ESTA DISPONIBLE PERO NO ESTA LIMPIA, POR ESO LOS CONTADORES Y LOS ACUMULADORES SE INICIALIZAN EN =0 POR SI ANTERIORMENTE EN MEMORIA LE QUEDABA UN DATO GUARDADO...
+
+ojooo PARA PONER ACENTOS EJ 
+N.MERO (NUMERO)
+SE LE PONE ABAJO: PRINTF("n%cmero: ", 163); // el 163 es la u con acento en la tabla ascii, para poner acento se sigue este sistema con los demas...
+otro rj numero del año: PRINTF("n%cmero del a%co: ", 163,164) 164 es la ñ es la tabla de codigo ascii
+
+
+PARCIALITOS CORRESPONDEN A LOS MARTES, A LA MATERIA DE PROGRAMACION, NO LABORATORIO...sobre lso temas que ya vimos y sobre la clase del dia, entran ambos en el parcialito...hay que aprobar los 4 tps para aprobar la materia...7/9 hay que entregar la calculadora
+
+SCOPE, CUANDO Y DESDE DONDE SE PUEDE ACCEDER A UNA VARIABLE...EJ CADA VARIABLE ESTA DEFINIDA EN CD MODULO, ESO SE DEFINE COMO ALCANCE...
+VARIABLES GLOBALES...SE DEFINEN ANTES DE LAS FUNCIONES, SE PUEDEN ACCEDER DESDE CUALQUIER FUNCION: MAIN O LAS INDIVIDUALES...
+SE DEFINEN ANTES DE MAIN Y DE LOS PROTOTIPOS!
+
+#include <stdio.h>
+int var;    OJJJJJJO ACA ESTA LA VARIABKLE VAR COMO GLOBAL...
+void carga(void);
+void main(void)
+{
+int x,y,z;
+var=5;
+carga();
+printf("%d",var);
+}
+void carga(void)
+{
+var=3;
+}
+ 
+ ES EL EJEMPLO DE LA GUIA, NO HAY RETURN POR QUE ESTA EN VOID!
+
+int var;  // ES IGUAL A LA LOCAL PERO NO SE PISA CON LA OTRA POR QUE ESTA ES GLOBAL
+void carga(void);
+void main(void)
+{
+int x,y,z;
+var=5;
+carga();
+printf("%d",var);
+}
+void carga(void)
+{
+int var; // ESTA VAR ES LOCAL, OCUPA OTRO ESPACIO EN MEMORIA
+var=3;
+}
+
+EJEMPLO DE COMO SE PUEDEN USAR VARIABLES CON 2 NOMBRES IGUALES SIENDO UNA GLOBAL Y OTRA LOCAL!
+
+LA VARIABLE LOCAL TIENE PRIORIDAD DE EJECUCION EN LA FUNCION QUE LA GLOBAL!!
+
+OJOOOOOO!
+
+
+PUNTEROssss
+
+PUNTERO ES UNA VARIABLE QUE GUARDA UNA DIRECCION DE MEMORIA Y EN ESA DIRECCION SE VA A ENCONTRAR UN TIPO DE DATO DE ESE PUNTERO...
+
+int *ptr; (el * significa que es un puntero de tipo entero)
+ptr=&var; (al puntero se le asigna var , el amperstad toma la direccion de memoria de la variable...)oojoooo el & adelante de la variable no obtiene el valor de la variable, sino su direccion de memoria...
+
+por eso el puntero guarda la direccion de memoria...
+
+*ptr (con el asterisco le pido que traiga el dato guardado de la dir de memoria, el numero)
+ptr (sin asterisco, trae la direccion de memoria del puntero), vos podes usar esa direccion para asignarle cualquier dato de cualquier variable despues!
+
+pasaje de valor a la funcion, o sea cuando pide los numeros 1 y 2 se los pasan a la funcion!!
+
+pasaje por valor envia una copia de los numeros ingresados, esos numeros no se tocan por eso son una copia...
+
+pasaje por referencia, se manipula la direccion de memoria...
+
+para eso lleva el & adelante de la var...
+
+queda guardada en valor de memoria y una var y ahorra una dir de datos...
+
+SE RECOMIENDA NO USAR LAS VARIABLES GLOBALES POR QUE SE PUEDEN MODIFICAR LOS DATOS DE CUALQUIER LADO Y EL PROGRAMA QUEDA FRAGIL Y SE
+TIENEN Q BUSCAR EL ERROR X TODOS LADOS ROMPIENDO LA IDEA DE LAS FUNCIONES PARA ECONOMIZAR TIEMPO AL BUSCAR ERRORES..
+
+NO SE PUEDE DIVIDIR POR 0 EN EL TP HAY QUE INFORMAR QUE HAY UN ERROR
+
+FACTORIAL SE DEFINE N!
+
+EL FACTORIAL DE 3 ES 3!= 3.2.1= 6    EL 4!=4*3*2*1=24
+
+
+
+PARA EL TP:
+
+PRIMERO SE HACE EL MAIN..., MENU DE OPCIONES: NUMERO 1, NUMERO 2, EL 3 ABRE LA OPCION DE FUNCIONES, 4 MULT, 5 DIVISION ETC...
+
+1) CICLO REPETITIVO WHILE O DO WHILE, 
+
+DO 
+{
+	INT MENU() // DECLARO LA FUNCION...SINO PONES DIRECTAMENTE LOS PRINT F EN EL DO...
+	{
+		PRINT F SUMA
+		PRINT F RESTA
+		ETC
+
+		PRINT F SOLUCIONES
+		SCANF (; OPCION)
+		RETURN OPCION;
+
+	}
+}
+
+
+WHILE
+
+2) DENTRO DEL DO: HACER UN SWITCH CON LAS OPCIONES:
+Y EN EL LOS CASE DEL SWITCH SE LLAMAN LAS FUNCIONES Y SE PONE BREAK, 
+PARA EL CASO DE LA DIVISION, MULTI, ETC... Y DENTRO DE LOS CASOS QUE TIENEN OTROS CASOS, EL 3 O EL 4 SE HACEN OTRO SWITCH 
+LOS SWITCH INTERNOS SON DE TIPO CHAR...
+
+MAIN
+
+INT OPCION;
+FLOAT OP1=0, OP2=0, // estan en 0 para que la calculadora empiece en 0 
+
+DO
+{
+	SYSTEM("CLS")
+	PRINT F ("MENU")
+	PRINT F ( "\N\N 1. INGRESAR OP 1 (A=%2F)", OP1)   ASI SE VE UN CERO EN LA PC AL PRINCIPIO
+	PRINT F ( "\N 1. INGRESAR OP 2 (b=%2F)", OP2)
+}
+
+WHILE (OPCION!= 5)
+
+OJOO PARA HACER EL CICLO REPETITIVO...
+
+
+
