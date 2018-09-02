@@ -1,0 +1,125 @@
+
+PREGUNTAS:
+
+1) NO ME SALE HACER LA FUNCION MENU: VA ALGO ENTRE LOS PARENTESIS? MENU() - 
+POR OTRO LADO, NO SE COMO HACER PARA LLAMARLA AL NO SER UNA OP MAT Y SI PARA ESE RETURN DEBO DECLARAR OTRA VARIABLE.
+
+2) NO SE COMO HACER LOS ERRORES DE LA DIVISION POR CERO QUE HAY QUE MOSTRAR...NO SE SI ES UN IF/ELSE O HAY QUE VALIDARLO
+Y NO SE SI HAY QUE HACERLO DENTRO DE LA FUNCION O CUANDO MUESTRO LOS RESULTADOS
+
+3) CUANDO MUESTRO EL FACTORIAL CREE DOS VARIABLES DISTINTAS EN LA FUNCION MAIN, NO SE SI ESTA OK!
+
+4) CUANDO DICE QUE HAY QUE COMENTAR EL PROGRAMA COMO QUIERE LA CATEDRA SE REFIERE A DOXIIGEN?
+
+
+
+ #include <stdio.h>
+#include <stdlib.h>
+
+float suma (float op1, float op2);
+float resta (float op1, float op2);
+float division (float op1, float op2);
+float multiplicacion (float op1, float op2);
+int factorial (int op1);
+
+int main()
+{
+    int opciones ;
+    float operando1 = 0, operando2= 0; // igualados a cero para que se vea el numero al iniciar
+    float sumar;
+    float restar;
+    float dividir;
+    float multiplicar;
+    int factorial1, factorial2;
+
+    do
+    {
+        //system("cls");
+        printf( "\n MENU");
+        printf(" \n\n 1.Ingresar 1er operando: (A=%.0f)", operando1);
+        printf("\n 2.Ingresar 2do operando: (B=%.0f)", operando2);
+        printf("\n 3.Calcular todas las operaciones:");
+        printf("\n 4.Mostrar todos los resultados:");
+        printf("\n 5.Salir");
+
+        printf("\n \n Seleccionar opcion:");
+        scanf("%d", &opciones);
+
+        switch (opciones)
+        {
+            case 1:
+                printf(" Ingrese 1er operando:");
+                scanf("%f", &operando1);
+                break;
+            case 2:
+                printf(" Ingrese 2do operando:");
+                scanf("%f", &operando2);
+                break;
+
+            case 3: //aca hay que calcular los resultados!
+
+                sumar = suma(operando1, operando2);
+                restar = resta(operando1, operando2);
+                dividir = division( operando1, operando2);
+                multiplicar = multiplicacion( operando1, operando2);
+                factorial1 = factorial (operando1);
+                factorial2= factorial(operando2);
+
+                break;
+
+            case 4: //aca se informan los resultados!
+
+                printf("a) El resultado de A+B es: %0.2f", sumar);
+                printf("\n b) El resultado de A-B es:%0.2f", restar);
+                printf("\n c) El resultado de A/B es:%0.2f", dividir); //o “No es posible dividir por cero”; ver aca ojoo
+                printf("\n d) El resultado de A*B es:%0.2f", multiplicar);
+                printf("\n e) El factorial de A es: %d - El factorial de B es:%d ", factorial1, factorial2 );
+
+                break;
+
+            default:
+                break;
+
+        }
+    } while ( opciones != 5);
+
+    return 0;
+}
+
+float suma (float op1, float op2)
+{
+    float resultado;
+    resultado=op1 + op2;
+    return resultado;
+}
+
+float resta (float op1, float op2)
+{
+    float resultado;
+    resultado= op1 - op2;
+    return resultado;
+}
+float division (float op1, float op2)
+{
+    float resultado;
+    resultado = op1 / op2;
+    return resultado;
+}
+float multiplicacion (float op1, float op2)
+{
+    float resultado;
+    resultado = op1 * op2;
+    return resultado;
+}
+int factorial (int op1)
+{
+    int factorial=1;
+    int contador;
+
+    for (contador=1; op1 >= contador; contador ++ )
+    {
+        factorial= factorial * contador;
+    }
+    return factorial;
+
+}
