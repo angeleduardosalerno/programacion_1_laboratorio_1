@@ -1,0 +1,124 @@
+CLASE 4 PROGRAMACION 2
+
+nt utn_getNumero(int* pResultado,
+char* mensaje,
+char* mensajeError,
+int minimo,
+int maximo,
+int reintentos)
+
+
+nt utn_getNumero(int* pResultado  si esta asi, cuando la llame en la funcion a esta variable hay que empezarla con (&variable, ), el ampersad indica que toma un valor de referencia!
+
+EN LAS DIRECCIONES DE MEMORIA SE TRABAJA DE FORMA NUMERICA + HEXADECIMAL...
+
+CUANDO SE AGREGA &variable, CUANDO SE LE QUIERE ASIGNAR UN VALOR DIFERENTE A LA DIRECCION DE MEMORIA SE ANTECEDE CON * pResultado (*), ES EL OPERADOR DE INDIRECCION, ES PARA GUARDAR UN VALOR EN UNA DIRECCION DE MEMORIA REFERENCIADA!
+
+EN SIST OP DE 64 BITS UN ENTERO OCUPA 4 BITS EN DIR DE MEMORIA
+
+PARA PASAR MAS DE UN CARACTER - UN TEXTO O MENSAJE - HAY QUE PASARLO POR REFERENCIA (CON * ADELANTE) , SINO ENTRA SOLO UN CARACTER...SE DEJA EL [] POR QUE NO SE SABE LA CANTIDAD DE CARACTERES QUE VA A TENER!
+
+
+EN EL IF SI HAY UNA SOLA LINEA EJ: 
+
+if(num<=maximo && num>=minimo)
+break
+
+NO HACE FALTA PONERLE LLAVES...PERO SIEMPRE SE RECOMIENDA, SOLO LEE UNA LINEA ASI...
+
+
+-----------------------ARRAYS -------------------------------------
+
+UN VECTOR ES UNA VARIABLE,
+UN ARRAY ES UNA VARIABLE QUE TIENE UN TIPO (INT, CHAR ETC...)
+QUE PUEDE TENER GUARDADO MAS DE UN DATO OJOOOOOO!!!!!
+
+INT NRO [5] EL 5 ES LA CANTIDAD DE ELEMENTOS QUE PUEDE CONTENER!!!, YA NO GUARDA SOLO UN DATO!!!
+UN VECTOR DE 5 ELEMENTOS, DICHOS ELEMENTOS SE PUEDE ACCEDER DESDE 0 HASTA N-1 (N EN ESTE CASO ES 5), DE PUEDE ACCEDER DE 0 A 4
+
+SE PIDE MEMORIA DE MANERA ESTATICA, A MEDIDA Q SE EJECUTA PIDE MEMORIA, SI EN EL [ ] DEL ARRAY PONGO UNA CONSTANTE, PERO NO SE PUEDE GUARDAR ADENTRO UNA VAR INGRESENUMERO EJ... NO SE PUEDE HACER CON VAR POR QUE NECESITAS TENERLO DEFINIDO DESDE ANTES PARA Q TE DEJE DISPONIBLE UN ESPACIO DE MEMORIA
+
+EL PRIMER INDICE DE UN ARRAY ES 0!!
+
+PARA IMPRIMIR EL 5 PRINTF( " %D, ") VER FOTOS EN EL CELU..
+
+USAR CONSTANTES CON ARRAYS PARA PODER MODIFICARLAS DESPUES------------------------------
+
+SE RECOMIENDA HACER AL PRINCIPIO UN DEFINE CANT 48
+
+Y EN EL INT EDAD [], PONES INT EDAD [CANT] Y SI TENES QUE CAMBIAR LA CANTIDAD VAS ARRIBA Y LO MODIFICAS UNA VEZ Y TE QUEDA EN TODO EL PROGRAMA
+
+-----------EJ CONSTANTES Y ARRAYS
+
+#include <stdio.h>
+#include <stdlib.h>
+#define CANT 5 //se escribe asi!!! ACA SE DEFINIO UNA CONSTANTE QUE PONES MODIFICAR SI QUERES CAMBIAR LA CANTIDAD DE REPERICIONES
+//MODIFICANDOLA ACA, NO TENES QUE IR ADENTRO DEL PROGRAMA
+
+int main()
+{
+    int edad [CANT];
+    int i;
+
+    for (i=0; i< CANT; i++)
+    {
+        printf("Ingrese la edad: ");
+        scanf("%d", &edad[i]); //se le pone el contador para que lo muestre!! ES CARGA SECUENCIAL PARA CARGAR EL ELEMENTO, EL CONTADOR TE PERMITE HACER LA CARGA SECUENCIAL!!
+    }
+
+    for (i=0; i< CANT; i++)
+    {
+        printf(" \n La edad es: %d", edad[i]);
+    }
+
+
+    return 0;
+}
+
+
+LA VIDA REAL NO TRABAJA CON CARGA SECUENCIAL YA QUE TENES QUE INGRESAR TODOS LOS DATOS DE PRIMERO AL ULTIMO Y NO PODES ELEGIR CADA UNO...
+
+LA OTRA CARGA ES LA CARGA ALEATORIA:---------------
+
+SE CARGA UN DATO Y SE SALE DE LA CARGA, PARA CARGAR EL OTRO DATO SE CARGA Y SE SALE DE LA MISMA...
+
+
+ejemplo anterior usando edad y salario
+
+#include <stdio.h>
+#include <stdlib.h>
+#define CANT 5 //se escribe asi!!! ACA SE DEFINIO UNA CONSTANTE QUE PONES MODIFICAR SI QUERES CAMBIAR LA CANTIDAD DE REPERICIONES
+//MODIFICANDOLA ACA, NO TENES QUE IR ADENTRO DEL PROGRAMA
+
+int main()
+{
+    int edad [CANT];
+    int i;
+    float salario [CANT];
+
+    for (i=0; i< CANT; i++)
+    {
+        printf("Ingrese la edad: ");
+        scanf("%d", &edad[i]);
+        printf("Ingrese su salario: ");
+        scanf("%f", &salario[i]); // ojo ver usa la misma direccion de memoria!!, ver en el ejemplo de la foto!
+    }
+
+    for (i=0; i< CANT; i++)
+    {
+        printf(" \n La edad es: %d", edad[i]); // TIENEN EL MISMO INDICE
+        printf(" \n El salario es: %f", salario[i]); // TIENEN EL MISMO INDICE...
+    }
+
+
+    return 0;
+}
+
+
+LA EDAD CON EL SALARIO SE RELACIONA CON EL INDICE, SE CONOCE COMO 
+
+VECTORES O ARRAYS PARALELOS:
+
+TIENE Q TENER LA MISMA CANTIDAD DE ELEMENTOS Y NO HACE FALTA QUE AMBOS SEAN DEL MISMO TIPO, PERO DENTRO DEL MISMO TIPO TODOS TIENEN QUE SER INT
+
+
