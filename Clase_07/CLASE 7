@@ -1,0 +1,68 @@
+CLASE 7
+
+siempre anteponer las funciones dentro de la biblioteca con el nombre de la biblioteca y _
+
+ej en utn. c empezarlas con utn_getEntero!!!   OJOOOOOOO
+
+
+INT RETORNO =-1; = SE EMPIEZA ASI, EMPIEZA INDICANDO UN ERROR Y SI ESTA OK SE CAMBIA ADENTRO..., SE PONE AL PRIMERO Y AL FINAL EL 											RETURN...
+			1) SE EMPIEZA A DETERMINAR LO QUE ES MAS OBVIO A DETERMINAR!
+			2) EN LAS VARIABLES PUNTERO LO PRIMERO Q HAY QUE HHACER ES VER QUE EL PUNTERO NO APUNTE A UNA DIRECCION INVALIDA X ESO
+			si el puntero esta ok es distinto de null
+
+			if (pEntero!= NULL && msg != NULL && msgErr != NULL && min <= max && reintentos >= 0) // aca se ponen los punteros y se pregunta si son diferentes a null!! para validar que ingresen un dato ok! aca se pone todo y despues se arma el programa!!!!!
+
+
+
+			3) en maximos y minimos se puede validar que minimo sea menor o igual a maximo....pero menimo no puede ser mayor a maximo
+
+
+			4)determinar si los limites estan incluidos!
+
+
+
+
+RETURN RETORNO;
+
+
+INT RETORNO =-1; 
+INT bufferInt;
+
+
+if (pEntero!= NULL && msg != NULL && msgErr != NULL && min <= max) // aca se pone el desarrollo del programa!
+
+{	do
+	{	reintentos --; // hay que sacarle uno a reitentos!
+
+		printf ("%s", msg) // el puntero ingresado en el parametro...
+		scanf ("%d", & bufferInt); // hay que hacer dos validaciones si el scanf consigio lo q se le pide dice 1, y si esta en el 
+										rango de max o minimos, el scan f devuelve la cantidad de mascaras que le pedis si es un dato devuelve 1, si son dos %d %d devuelve 2 etc...sino encuentra nada devuelve un 0!! 
+		
+		if (scanf ("%d", & bufferInt)==1) &&  (si es un entero se pregunta si esta dentro del rango) && (bufferInt >= min && bufferInt <= max) // despues validas maximo y minimo...
+		{ 
+			*pEntero=  bufferInt; //en esta direccion de memoria guarda el dato por eso hay que poner *
+				retorno=0; // aca le decis que esta todo ok!!!
+				break; // el break rompe el bucle mas cercano, busca el bucle mas cercano y sale del while... sale afuera del bucle donde estoy, el continue se queda adentro del bucle...
+
+
+		}
+		else
+		{
+				printf("%s", msgErr);
+				//en el error se pone el flush por que solo quedaria una letra sino cumple las condiciones
+				si el scanf lee una letra y vos le decis int, deja la letra ahi y no la vuelve a sacar...sino repite siempre el mismo error.....! OJOOOOOOOOOOO!!!
+
+
+		}
+
+
+	}while (reintentos > 0); mientras sea mayor a 0 hay algo para hacer!
+}
+	
+
+}
+
+
+RETURN RETORNO;
+
+EL GET INT ES UNA FUNCION PRIVADA DE LA BIBLIOTECA... SI LE PONES STATIC INT HACE QUE SEA UNA FUNCION PRIVADA!
