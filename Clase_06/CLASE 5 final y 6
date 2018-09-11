@@ -1,0 +1,282 @@
+CLASE FINAL / Y 6
+
+
+EL METODO BURBUJA SIRVE PARA ORDENAR VECTORES CON UN SOLO CRITERIO...
+
+EL PROBLEMA HAY CUANDO SE DAN NUMEROS O RESULTADOS IGUALES...
+
+CUANDO SE REPITE UN PRIMER CRITERIO HAY QUE TOMAR OTRO, UN SEGUNDO CRITERIO DE ORDENAMIENTO EJ : DIFERENCIA DE GOLES...
+
+CUANDO HAY DOS VECTORES SE TIENE QUE REPETIR EL PROCESO DE ACUERDO A LOS VECTORES QUE HAYA, SI SON 3 VECTORES HAY QUE REPETIR
+EL IF DE ORDENAMIENTO BURBUJA POR LA CANTIDAD DE VECTORES QUE SE QUIERAN ORDENAR...
+DESPUES SE SIMPLIFICA EN POCAS LINEAS!!
+
+EN EL ELSE DEL ORDENAMIENTO DE AMBOS VECTORES EN EL ELSE SE REPITE SOLO EL ORDENAMIENTO DEL SEGUNDO VECTOR YA QUE ESTA ORDENADO...
+
+PARA INICIALIZAR UN VECTOR Y NO TENER QUE INGRESAR LOS NUMEROS MANUELMENTE SE PONE INT NOMBRE[CANTIDAD]={1,2,3,4,5}; (LO DE ADENTRO ES DEACUERDO A LA CANTIDDAD DE ELEMENTOS QUE TIENE...)
+
+EJEMPLO TABLA DE FUTBOL
+
+#include <stdio.h>
+#include <stdlib.h>
+#define CANT 5
+
+int main()  // estoy creando aca una tabla de posiciones...
+{
+    int pts [CANT]={1,0,3,3,1};
+    int dg [CANT]={8,10,5,3,4}; //dg= diferencia de goles
+    int auxPts, auxDg, i,j;
+
+    for (i=0; i<CANT -1; i++)
+    {
+        for (j=i+1; j<CANT; j++)
+        {
+            if (pts[i]<pts[j])
+            {
+                auxPts=pts[i];
+                pts[i]=pts[j];
+                pts[j]=auxPts;
+
+                auxDg=dg[i];
+                dg[i]=dg[j];
+                dg[j]=auxDg;
+            }
+            else
+            {
+                if (pts[i]==pts[j]) // CUANDO HALLA LA MISMA CANTIDAD DE PUNTOS EL DE MAYOR DIFERENCIA DE GOL QUEDA ARRIBA
+                {
+                    if (dg[i] < dg[j])
+                    {
+                      auxDg=dg[i];
+                        dg[i]=dg[j];
+                        dg[j]=auxDg;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    for (i=0; i<CANT; i++)
+    {
+        printf("\n %d   %d",pts[i],dg[i] );
+    }
+
+
+
+
+
+    return 0;
+}
+
+
+-----------------------CADENAS DE CARACTERES-------------------------------------
+
+EN VARIABLES CHAR SOLO SE PUEDE GUARDAR UN CARACTER...
+
+HAY 5 TIPOS DE DATOS CHAR, INT, FLOAT, DOUBLE, VOID... 1 CHAR OCUPA 1 BITE, CHAR [10] SON 10 BITES, EL SO TE DA LA MEMORIA, QUE ESTA LIBRE, PERO NO ESTA VACIA!!!HAY QUE LIMPIARLA!!!
+
+HAY QUE FABRICAR EL STRING CON UN VECTOR... CHAR PALABRA [10]="HOLA"; , PARA INICIALIZAR UN VECTOR... \ ES UNA SECUENCIA DE ESCAPE, 
+EL \ 0 SIGNIFICA QUE TERMINA LA CADENA DE CARACTERES!!!
+EL COMPILADOR LO PONE AUTOMATICAMENTE!!! HAY QUE PONERLE UN LUGAR MAS PARA QUE GUARDE EL \ 0 -----OJOOO, TE REPRESENTA EL ESPACIO COMO UN CARACTER MAS!!
+
+SE PUEDE HACER CHAR LETRA; LETRA 'A'; ------NO SE PUEDE HACER PALABRA='ALGO'--------, SOLO SE PUEDE HACER EN LA INICIALIZACION, YA QUE PALABRA NO ES NATIVA, CHAR SI LO ES POR QUE ES UN DATO, UN ARRAY ESTA COMPUESTO DE VARIOS DATOS POR ESO NO ES NATIVO ES UN VECTOR...PARA GUARDAR EL VECTOR HAY QUE DECIRLE EL LUGAR Y EL INDICE..
+PERO NO SIEMPRE SE PUEDE INICIALIZAR LA PALABRA EN EL VECTOR...
+
+HAY QUE INCLUIR STRING.H--------------OJOOOOO
+
+QUE INCLUYE LA FUNCION STRCPY Y PERMITE HACER LO QUE ANTES NO DEJABA.....STRCPY(DESTINO, ORIGEN); DESTINO (PUEDE SER VARIABLE UNICAMENTE), ORIGEN (PUEDE SER VARIABLE, CONSTANTE O LITERAL)..
+
+OJOOOOOOOOO CUANDO ES CADENA DE CARACTERES SE HACEN " ", CUANDO ES LETRA SOLA SE USA ' ' (COMILLA SOLA...) ----------------------
+
+EJEMPLO IMPRIMIR CADENA DE CARACTERES
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    char nombre[31];
+
+    strcpy(nombre, "Angel Antonio Eduardo"); // si es string va comilla doble ----
+												LE COPIAS A LA VARIABLE DESTINO NOMBRE, EL ORIGEN QUE PUEDE SER DE CUALQUIER TIPO, Y HACES QUE LO MUESTRE EN STRING!!!
+    printf("Su nombre es: %s", nombre);
+
+
+
+    return 0;
+}
+
+PARA SCANF DE CHAR VA SIN EL & ADELANTE YA QUE EL STRING NO ES NATIVO, SE PUEDE PONER EL & PERO HAY QUE INDICARLE QUE COMIENCE EN EL VECTOR Y INDICE 0, SINO LO HACE AUTOMATICAMNENTE! HAY QUE USAR EL FFLUSH (STDIN);
+
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    char nombre[31];
+
+    /*strcpy(nombre, "Angel Antonio Eduardo"); // si es string va comilla doble
+    printf("Su nombre es: %s", nombre);*/
+
+    printf("Ingrese su nombre: ");
+    fflush(stdin); // para limpiar la basura posible  almacenada en la memoria!
+    scanf("%s", nombre);
+
+    printf("Su nombre es: %s", nombre); // solo muestra un nombre con scanf, sino se usa fget
+
+    return 0;
+}
+
+
+--------------FUNCION GETS---------------, SE USA IGUAL QUE SCANF........-----------
+
+***** ojoooo ******NO SE RECOMIENDA USAR GETS, TIENE PROBLEMAS DE SEGURIDAD!!!
+
+EN GETS SE TIENE QUE INCLUIR FFLUSH, SE PUEDE USAR NOMBRES COMPUESTOS CON GETS! EN SO DIFERENTE A MICROSOFT YA LAS SACARON!!
+
+
+int main()
+{
+    char nombre[31];
+
+    /*strcpy(nombre, "Angel Antonio Eduardo"); // si es string va comilla doble
+    printf("Su nombre es: %s", nombre);*/
+
+    printf("Ingrese su nombre: ");
+    fflush(stdin); // para limpiar la basura posible  almacenada en la memoria!
+    gets(nombre);
+
+    printf("Su nombre es: %s", nombre); // solo muestra un nombre con scanf, sino se usa fget
+
+    return 0;
+
+
+
+STRLEN (STRing LENght) -----------------------------------------------------------
+
+cantidad = strlen(nombre);
+
+DEVUELVE LA CANTIDAD DE ELEMENTOS QUE TIENE LA CADENA....DEVUELVE UN ENTERO...
+
+NO CUENTA EL 0 DEL FINAL DEL VECTOR OOOOOOOOOOOOJOOOOOOOOOO!
+
+CUENTA EL ESPACIO COMO UN CARACTER Y NO TOMA EN CUENTA EL 0 DEL FINAL
+
+
+
+
+
+
+
+FUNCION F GETS--------------------------------------------------------------------- OJJJJJJJJJJJJJOOOOOOOOO
+
+esta en el apunte de la clase 4, de imputs
+
+SE USA ESTA FUNCION PARA CADENA DE CARACTERES!!!   SINO EL %[^\n] EN EL MODIFICADOR DE TIPO DE DATO DEL SCANF 
+
+**********    fgets (cadena, cantidad de caracteres que quiero que lea, stdin); 
+
+
+ANTES DEL \0 PONE UN \N, CUENTA AL \N (QUE ES EL ENTER) COMO UN CARACTER MAS, PARA QUE NO HAGA EL ENTER, 
+SE TIENE QUE SUPLANTAR EL \N DEL FINAL POR UN \0 
+
+
+HAY QUE INGRESAR EL NOMBRE...
+
+int main()
+{
+    char buffer[64];
+    int cantidad;
+
+    fgets(buffer,62 ,stdin); // LE SACAS 2 TERMINOS AL FINAL POR QUE TIENE EL F GETS EL \N Y EL \0 DEL FINAL --
+
+    cantidad = strlen(buffer); // SE LE ASIGNA CANTIDAD
+
+    buffer[cantidad-1] = '\0'; // ACA LE DECIS QUE EN LA POSICION DEL \N LE PONES EL 0!!
+
+    printf("%s", buffer);
+
+    return 0;
+   }
+
+
+
+FUNCION STRCAT ( CONCATENA 2 VECTORES)----------------------------------------VER EJEMPLO SUPER IMPPPPPP!!!!!
+
+HAY QUE AGREGARLE EL ESPACIO!!!
+
+PONER UN \0 AL PRIMER ELEMENTO DE LA CADENA HACE QUE SE INICIE A MOSTRAR EL NOMBRE DE AHI, LE INDICAS QUE INICIE AHI, SE USA EL VECTOR 0 Y SE LE ASIGNA EL \ 0
+
+SE TIENE QUE CREAR EL ESPACIO Y SE USA EL STRCAT
+
+TODAS LAS FUNCIONES QUE EMPIEZAEN CON STR TRABAJAN CON CADENA DE CARACTERES!!
+
+SE TIENE QUE ARMAR LA CONCATENACION DE NOMBRES...SIEMPRE AL FINAL DE CADA NOMBRE GUARDA UN \0, HAY QUE SACARLO...VER FOTO!!
+
+SIEMPRE QUE ESCRIBE AGREGA UN \ 0 Y CUANDO VUELVE A ESCRIBIR SE REMPLAZA EL \0 Y QUEDA OTRO \0 AL FINAL DEL TEXTO
+
+
+ #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    char nombre [31];
+    char apellido [31];
+    char apeNom [62];
+    int cantidad;
+
+    printf("Nombre: ");
+    fgets (nombre, nombre - 2, stdin);
+    cantidad=strlen(nombre); //ojooooo sin esta parte no anda, le pedis suplantar ese digito
+    nombre[cantidad-1]='\0';
+
+    printf("Apellido");
+    fgets (apellido, apellido - 2, stdin);
+    cantidad=strlen(apellido); //SE TIENE QUE REPETIR DEBAJO DEL GETS!!
+    apellido[cantidad-1]='\0';
+
+    strcpy(apeNom, apellido);
+    strcpy(apeNom, " "); // aca le indicas que en el ultimo \0 anterior lo cambies por un espacio....y guarda el espacio y otro \0
+    strcpy(apeNom, nombre);
+
+   /* //son dos formas distintas de hacerlo!!!!
+    apeNom[0] = '\0'; // aca le decis que suplante el indice 0 empieze con un \0 para empezar a guardar las cosas desde ahi...
+    strcpy(apeNom, apellido);
+    strcpy(apeNom, " "); // aca le indicas que en el ultimo \0 anterior lo cambies por un espacio....y guarda el espacio y otro \0
+    strcpy(apeNom, nombre);*/
+
+
+    printf("%s", apeNom);
+
+
+    return 0;
+}
+
+
+
+FUNCIONES -----------------------------------------------------OJJJJJJJJJJJOOOOOOOOO...SUPER IMP.....PARA MODIFICAR NOMBRES!!!!
+
+STRLWR (NOMBRE); PASA TODOS LOS CARACTERES DE LA CADENA A MINUSCULA.....SI ESTA EN MINUS...ESTA AHI....
+STRUPR (NOMBRE); PASA TODOS LOS ELEMENTOS A MAYUSCULA......SI YA ESTA EN MAYUS LO DEJA ASI...
+
+
+SI EMPIEZA CON STR HAY QUE INCLUIR LA BIBLIOTECA STRING.H
+
+
+
+INCLUIR BIBLIOTECA CTYPE.H--------------------------------------
+
+FUNCIONES 
+
+TOLOWER HACE LO MISMO QUE STRLWR (NOMBRE) PERO SOLO CON UN CARACTER.... 
+
+TOUPPER HACE LO MISMO QUE STRUPR (NOMBRE) PERO SOLO CON UN CARACTER....EJ NOMBRE=TOUPPER (NOMBRE [0]), LE PASAS EL INDICE DEL PRIMER CARACTER PARA QUE LA PRIMER LETRA DEL NOMBRE ESTE EN MAYUS
+
+OJJJJJJJJJJO VER QUE SE USAN DISTINTO HAY QUE RESPETARLO NOMBRE=TOUPPER (NOMBRE [0]) ASI CON UN CARACTER / STRLWR (NOMBRE) CON UNA CADENA DE CARACTERES !!1 OJOOOOOOO SUPPP IMPP
