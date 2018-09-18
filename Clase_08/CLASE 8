@@ -1,0 +1,215 @@
+CLASE 8
+
+ESTRUCTURA DE DATOS! // LAS ESTRUCTURAS VAN EN EL .H OJOOOOOOOO! LAS ESTRUCTURAS VAN ARRIBA DE LOS PROTOTIPOS!!!POR SI UN PROTOTIPO INCLUYE A UNA ESTRUCT.
+
+O
+
+ESTRUCTURA!
+
+
+NOSOTROS PODEMOS CREAR NUESTRO PROPIO TIPO DE DATO, PARTIENDO DE LOS TIPOS DE DATOS DE C!!!! (CHAR, INT , ETC), DESPUES HAY QUE GUARDARLO!
+
+SE PUEDE ENCAPSULAR TODAS LAS VARIABLES DECLARADAS DENTRO DE UN TIPO DE DATO PROPIO...
+
+CON PALABRA RESERVADA STRUCT NOMBREDEVARIABLE { 
+
+Y LAS VARIABLES DECLARADAS ANTERIORMENTE...
+
+}
+
+SE DECLARA UNA ESTRUCTURA DE DATOS, SE AHORRA ESPACIO DE CODIGO...., LAS ESTRUCTURAS VAN AFUERA DEL MAIN, EN LA ESTRUCTURA . H , PRIMERO SE DECLARAN LAS ESTRUCTURAS, DESPUES LOS PROTOTIPOS!
+
+LA STRUCT ES COMO UN TIPO DE DATO STRUCT NOMBRE EMPLEADO; EL NOMBRE ES EMPLEADO DE TIPO DE DATO STRUCT NOMBRE!
+
+EMPLE.LEGAJO
+EMPLE.NOMBRE
+EMPLE.SALARIO
+
+
+DATO MIEMBRO DE LA ESTRUCTURA DE DATO O CAMPO!
+
+LAS VARIABLES CHAR NO SE LES PUEDE ASIGNAR CON EL = DE ASIGNACION, SE TIENEN QUE HACER CON STRCPY O SCAN F, 
+
+OJOO PARA CARGAR LOS VECTORES SE HACE & EMPLE [I].LEGAJO OJOOOOOOOOOOOO!!!! EL INDICE VA AHI Y NO AL FINAL!!
+
+
+EJEMPLO CLASE LLENAS ARRAYS CON ESTRUCTURAS------------------------------------------------------------------
+
+TENER CUIDADO COMO SE LLENAN LOS ARRAYS DE LAS ESTRUCTURAS  & EMPLE [I].LEGAJO OJOOOOOOOOOOOO!!!! EL INDICE VA AHI Y NO AL FINAL!!
+Y EN CHAR NO LLEVA &..
+
+OJO, HAY QUE SUPLANTAR EL SCANF CON EL FGETS!!!
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#define CANT 3
+
+struct eEmpleado
+{
+    int legajo;
+    char nombre [31];
+    float salario;
+    int isEmpty;
+};
+
+
+int main()
+{
+    struct eEmpleado empleado[CANT];
+    int i;
+
+    for (i=0; i< CANT; i++)
+    {
+        printf("Ingrese legajo:");
+        scanf("%d", & empleado[i].legajo);
+
+        printf("Nombre:\n");
+        fflush(stdin); // me olvide de poner esto
+        scanf("%s", empleado[i].nombre); // ojo no lleva &
+
+        printf("Salario:\n");
+        scanf("%f", &empleado[i].salario);
+
+        empleado[i].isEmpty = 0;
+
+        //system("cls");
+    }
+    for (i=0; i< CANT; i++)
+    {
+        printf("%d- %s -%.2f", empleado[i].legajo, empleado[i].nombre, empleado[i].salario);
+    }
+
+    return 0;
+}
+
+
+
+-------------------------------------------------------------------------------------------
+SUPPPPPPPPPPPER IMP......VER FOTOS!!
+
+USAR TYPEDEF STRUCT{
+	
+} NOMBRE;
+
+SIRVE PARA PONER UNICAMENTE EL NOMBRE Y NO TENER QUE PONER STRUCT NOMBRE..POR TODO EL PROGRAMA!
+
+
+empleado[i].isEmpty=1; //para indicar que esta vacio hay que poner 1 ---si pones 0 esta mal, es el opuesto, tampoco -1 como hacia!!
+}
+
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+EJERCICIO DE ABM PARA INGRESO, MODIFICACION Y ALTA DE DATOS CON ESTRUCTURAS!
+
+#include <stdio.h>
+#include <stdlib.h>
+#define CANT 3
+
+typedef struct{
+
+    int dia, mes, anio; // ojo se pone asi por que la ñ no la lee
+
+} eFecha;
+
+typedef struct
+{
+    int legajo;
+    char nombre [31];
+    eFecha fechaNac;
+    float salario;
+    int isEmpty;
+
+} ePersona;
+
+
+int main()
+{
+    ePersona empleado[CANT];
+    int i, opciones ;
+
+    for ( i=0; i< CANT; i++)
+    {
+        empleado[i].isEmpty=1; //para indicar que esta vacio hay que poner 1 ---si pones 0 esta mal, es el opuesto, tampoco -1 como hacia!!
+    }
+
+    do{
+
+    printf( "---------MENU-------");
+    printf( "\n 1. Altas: \n 2. Bajas: \n 3. Modificacion: \n 4. Listar \n 5. Salir");
+
+    printf( "Ingrese una opcion: ");
+    scanf("%d", & opciones);
+
+    switch (opciones){
+
+            case 1:
+                for ( i=0; i< CANT; i++)
+                {
+                    if (empleado[i].isEmpty ==1){
+
+                        printf("Ingrese legajo: ");
+                        scanf("%d", &empleado[i].legajo);
+
+                        printf("Ingrese nombre: ");
+                        fflush(stdin);
+                        scanf("%s", empleado[i].nombre); //ojo va sin &, hacerlo mejor con fgets!!!es la correcta...
+
+                        printf("Ingrese fecha de nacimiento: ");
+                        printf("Ingrese dia: ");
+                        scanf("%s", empleado[i].nombre);
+
+
+                    }
+                    empleado[i].isEmpty =0; // ojo aca el igual es solo =.
+                    break; // el break esta para no hacer el ingreso de forma secuencial y elegir donde guardarlo, se tendria que preguntar antes guardarlo por el indice..
+                }
+
+
+
+                break;
+
+
+
+
+    }
+
+
+    }while (opciones != 5);
+
+
+
+    for (i=0; i< CANT; i++)
+    {
+        printf("Ingrese legajo:");
+        scanf("%d", & empleado[i].legajo);
+
+        printf("Nombre:\n");
+        fflush(stdin); // me olvide de poner esto
+        scanf("%s", empleado[i].nombre); // ojo no lleva &
+
+        printf("Salario:\n");
+        scanf("%f", &empleado[i].salario);
+
+        empleado[i].isEmpty = 0;
+
+        //system("cls");
+    }
+    for (i=0; i< CANT; i++)
+    {
+        printf("%d- %s -%.2f", empleado[i].legajo, empleado[i].nombre, empleado[i].salario);
+    }
+
+
+
+
+    return 0;
+}
+
