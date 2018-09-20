@@ -1,0 +1,317 @@
+EJERCICIO HECHO OK DE LA CLASE 5:
+
+EN DONDE ME QUEDABA:
+
+1) HAY 2 FORMAS DE LLENAR UN VECTOR: CON SCANF Y ASIGNANDOLE LA VARIABLE DIRECTAMENTE COMO HICE Y COMO LO HIZO EL PROFE.
+
+2) CALCULE EL MAX Y MIN DE LA FORMA NUEVA IMPECABLE
+
+3) PROM COMO HICE ANTES
+
+4) TDO DENTRO DEL MISMO CICLO FOR Y PARA MOSTRAR EL PROM, MAX Y MIN AFUERA
+
+5) LA MODIFICACION DEL ARRAY QUEDA GUARDADA POR QUE SE REALIZA DENTRO DEL CICLO DO WHILE...
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+
+#define CANT 5
+
+
+/******************************************************************
+* Programa: Ejemplo Clase 5
+*
+* Objetivo:
+*   Solicitar al usuario 5 números, permitir listarlos por pantalla
+*   indicando el máximo, el mínimo y el promedio
+*   Permitir Modificar el valor de cualquiera de los números cargados
+*   indicando el índice del mismo y su nuevo valor.
+*
+* Aspectos a destacar:
+*   -Utilización de array
+*
+* Version: 0.1 del 29 diciembre de 2015
+* Autor: Mauricio Dávila
+* Revisión: Ernesto Gigliotti
+*
+* *******************************************************************/
+
+int main()
+{
+    int numero, maximo, minimo, indiceArray, array [CANT], opciones, prom, suma=0, indiceElejido;
+
+    do
+    {
+    printf("\n ----------MENU--------");
+    printf("\n 1. Ingreso de numeros");
+    printf("\n 2. Listado por pantalla");
+    printf("\n 3. Modificacion de numeros cargados");
+    printf("\n 4. Salir");
+
+    printf("\nIngrese la opcion: ");
+    scanf("%d", &opciones);
+
+    switch (opciones)
+    {
+
+        case 1:
+
+                for (indiceArray=0; indiceArray < CANT; indiceArray++)
+                {
+
+                    numero= utn_getInt("Ingrese el numero: ");
+                    array [indiceArray] = numero;
+                    //system("cls");
+                }
+                break;
+
+        case 2:
+                maximo= array[0];
+                minimo= array[0];
+
+                for (indiceArray=0; indiceArray < CANT; indiceArray++)
+                {
+                    suma = suma +  array [indiceArray];
+                    prom = suma / CANT;
+
+                    if (array [indiceArray] > maximo)
+                    {
+                        maximo = array [indiceArray];
+                    }
+
+                    if (array [indiceArray] < minimo)
+                    {
+                        minimo = array [indiceArray];
+                    }
+
+                    printf( "\n Indice: %d   -   Numero: %d", indiceArray, array[indiceArray]);
+
+                }
+
+                printf("\n Promedio: %d", prom);
+                printf("\n Maximo: %d", maximo);
+                printf("\n Minimo: %d", minimo);
+
+                break;
+
+        case 3:
+
+                indiceElejido= utn_getInt("Seleccione el indice que desea modificar: ");
+                numero= utn_getInt("Ingrese el numero: ");
+                array [indiceElejido] = numero;
+
+    }
+
+    } while (opciones != 4);
+
+
+    return 0;
+}
+
+
+
+
+ejercicio clase 7 ABM HECHO OK ---------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+
+#define CANT 5
+
+/*1) Realizar una agenda para guardar los datos de hasta 200 personas de las cuales se toman los siguientes datos:
+
+Nombre
+Apellido
+Legajo (NO SE PUEDE REPETIR)
+a- Realizar un programa con un menú de opciones para hacer altas , bajas y modificaciones (ABM) de una agenda.
+
+b- Mostrar un listado ordenado por Apellido
+
+*/
+
+int main()
+{
+    int opciones, legajo [CANT], indiceLugarLibre, auxLegajo, indiceBusqueda, i, j;
+    char nombre [CANT][50], apellido [CANT][50];
+    char auxStrNombre[50], auxStrApellido [50], auxStrLegajo [50];
+
+    utn_inicializarArrayInt(legajo, CANT, -1); // inicialice el array legajo con -1 q es un numero que no se usa...
+
+    do
+    {
+        opciones=utn_getInt( "------MENU------\n 1. Altas \n 2. Bajas \n 3. Modificacion \n 4. Listar \n 5. Ordenar por apellido \n 6. Salir. \n \n Seleccione la opcion: ");
+
+        switch (opciones)
+        {
+            case 1:
+                    indiceLugarLibre=utn_buscarLugarVacio(legajo, CANT, -1);
+
+                    //de aca hasta las funciones son validaciones!
+                    if (indiceLugarLibre==-1) // este -1 es el retorno de la funcion sino encontro lugar libre...
+                    {
+                        printf( "\n No hay lugares libres para ingresar mas informacion...");
+                        break;
+                    }
+
+                    //for (i=0; i< CANT; i++)  LA IDEA ACA ES NO USAR FOR PARA LA CARGA SECUENCIAL, AL PREGUNTAR POR EL LUGAR LIBRE, LOS CARGAS 1 A 1...
+                    printf("\n ALTAS");
+
+                    if (! (utn_getStringLetras("Ingrese su nombre: ", auxStrNombre))) // OJO LO GUARDA EN VARIABLES AUX, Y NO HAY QUE PONER EL INDICE POR QUE DICHAS VARIABLES GUARDAN UN SOLO DATO
+                    {
+                        printf("El nombre ingresado no es valido, debe estar compuesto solo por letras...");
+                        break;
+                    }
+
+                    if (! (utn_getStringLetras("Ingrese su Apellido: ", auxStrApellido)))
+                    {
+                        printf("El apellido ingresado no es valido, debe estar compuesto solo por letras...");
+                        break;
+                    }
+
+                    if (! (utn_getStringNumeros("Ingrese su numero de legajo...: ", auxStrLegajo)))
+                    {
+                        printf("El legajo debe ser numerico...");
+                        break;
+                    }
+
+                    auxLegajo= atoi(auxStrLegajo); // aca cambio la cadena de caracteres por enteros
+
+                    if (utn_buscarLugarVacio(legajo, CANT, auxLegajo) != -1) // aca le paso la cadena de caracteres convertida a enteros, para ver si el legajo se repite!
+                    {
+                        printf("El legajo ya existe...");
+                        break;
+                    }
+
+                    strcpy(nombre[indiceLugarLibre], auxStrNombre);
+                    strcpy(apellido[indiceLugarLibre], auxStrApellido);
+                    legajo[indiceLugarLibre]=auxLegajo;
+
+                    break;
+
+
+            case 2: //BAJA LOGICA X Q SOLO SE PONE EN EL LUGAR DEL LEGAJO EL NUMERO DE LUGAR VACIO SIN BORRAR NOMBRE Y APELLIDO
+
+                        if ( ! utn_getStringNumeros("Ingrese Legajo a dar de baja: ", auxStrLegajo )) // ojo la funcion toma str
+                        {
+                            printf("El legajo debe ser numerico...");
+                            break;
+                        }
+
+                        indiceBusqueda= utn_buscarLugarVacio(legajo, CANT, atoi(auxStrLegajo)); // convirtio la cadena en el numero de legajo
+
+                        if (indiceBusqueda==-1)
+                        {
+                            printf("No se encuentra ese legajo...");
+                            break;
+                        }
+                        else // indiceBusqueda!=-1  OJOOO ACA EL LO HIZO SIN EL ELSE..
+                        {
+                            legajo[indiceBusqueda]=-1; // o sea, si encontras el legago, en el indice q retorna la funcion guarda el -1 q indica luyar vacio!!
+                            break;
+                        }
+
+            case 3: //MODIFICACION
+
+                       // LA PRIMERA PARTE ES IGUAL A LA DE BAJA! ES PARA VALIDAR
+
+                       if ( ! utn_getStringNumeros("Ingrese Legajo a modificar: ", auxStrLegajo )) // ojo la funcion toma str
+                        {
+                            printf("El legajo debe ser numerico...");
+                            break;
+                        }
+
+                        indiceBusqueda= utn_buscarLugarVacio(legajo, CANT, atoi(auxStrLegajo)); // convirtio la cadena en el numero de legajo
+
+                        if (indiceBusqueda==-1)
+                        {
+                            printf("No se encuentra ese legajo...");
+                            break;
+                        }
+                        //UNA VEZ Q SE SABE Q EL LEGAJO EXISTE Y ESTA VALIDADO, SE PREGUNTA EL NOMBRE Y APELLIDO...
+
+                        if (! (utn_getStringLetras("Ingrese su nombre: ", auxStrNombre))) // OJO LO GUARDA EN VARIABLES AUX, Y NO HAY QUE PONER EL INDICE POR QUE DICHAS VARIABLES GUARDAN UN SOLO DATO
+                        {
+                            printf("El nombre ingresado no es valido, debe estar compuesto solo por letras...");
+                            break;
+                        }
+
+                        if (! (utn_getStringLetras("Ingrese su Apellido: ", auxStrApellido)))
+                        {
+                            printf("El apellido ingresado no es valido, debe estar compuesto solo por letras...");
+                            break;
+                        }
+
+                        strcpy(nombre[indiceBusqueda], auxStrNombre);
+                        strcpy(apellido[indiceBusqueda], auxStrApellido);
+
+                        break; // OJOOOO HAY QUE HACER EL BREAK PARA SALIR DEL CASE!!!
+
+
+            case 4: // listar
+
+                        printf("\n ------LISTADO-----\n");
+
+                        for (i=0; i< CANT; i++)
+                        {
+                            if (legajo[i] != -1) // ojo aca es el legjo de i - la idea es q si hay un menos uno o no hay nada o hay una persona dada de baja!
+                        {
+                             printf("\n Nombre: %s    -  Apellido: %s   - Legajo: %d" , nombre[i], apellido[i], legajo[i]);
+                        }
+                        }
+
+                          break; // ojo el break afuera del for para q no rompa el for
+
+
+            case 5: // Listado ordenado
+
+                        printf("\n ------ORDENADO-----\n"); // ORDENADO POR BURBUJA X APELLIDO...
+
+                        for (i=0; i< CANT-1; i++)
+                        {
+                            if (legajo[i] == -1) // ojo aca es el legjo de i - la idea es q si hay un menos uno o no hay nada o hay una persona dada de baja!
+                            {
+                                continue; // si encontras un -1, segui adelante, pasa a otro i...
+                            }
+
+                                for (j=i+1; j < CANT; j++)
+                            {
+                                    if (legajo[j] == -1) // ojo aca es el legjo de j !!!
+                                    {
+                                    continue; // si encontras un -1, segui adelante, pasa a otro i...
+                                    }
+
+                                    if ( strcmp( apellido[i], apellido [j])>0) // ORDENADO POR APELLIDO
+
+                                    {
+                                        strcpy( auxStrApellido, apellido[i]);
+                                        strcpy( apellido [i], apellido[j]);
+                                        strcpy( apellido[j], auxStrApellido);
+
+                                        strcpy( auxStrNombre, nombre[i]);
+                                        strcpy( nombre[i], nombre[j]);
+                                        strcpy( nombre[j], auxStrNombre);
+
+                                        auxLegajo = legajo [i];
+                                        legajo [i] = legajo [j];
+                                        legajo [j]=auxLegajo;
+
+                                    }
+
+                            }
+
+
+                        }
+
+                                        break; // ojo el break afuera del for para q no rompa el for ver puede estar mal esto
+
+
+        }
+
+    }while (opciones != 6);
+
+    return 0;
+}
