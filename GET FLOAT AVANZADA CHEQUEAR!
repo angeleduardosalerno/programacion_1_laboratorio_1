@@ -1,0 +1,116 @@
+
+FUNCION GET FLOAT AVANZADA
+
+VER: SI ESTA USADO OK ATOF
+
+ERRORES: INGRESAN LOS ENTEROS Y DESPUES LOS MUESTRA 1.000000
+ERRORES: NO SE COMO MOSTRAR UNICAMENTE 2 NUMEROS DECIMALES MUESTRA 1.000000000
+
+
+int utn_esDecimalAvanzada (char cadena []); // CONVIERTE EN ARRAY Y LO RECORRE CARACTER POR CARACTER PARA VALIDARLO...
+int utn_getFloatAvanzada(float* pResultado); // USE ATOF PARA CONVERTIR CADENA DE CARACTERES EN FLOAT, NO SE SI ESTA OK
+int utn_getNumeroConDecimalesAvanzada(float* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
+//EL UNICO PROBLEMA ES QUE SI INGRESAS UN ENTERO LO ACEPTA IGUAL... Y NO SE COMO PONER QUE MUESTRE SOLO 2 DECIMALES...
+
+
+int main()
+{
+
+
+    return 0;
+}
+
+
+/** \brief Verifica si el valor recibido es decimal.
+* \param char cadena de caracteres a ser analizada.
+* \return Devuelve 1 si es decimal y 0 si no lo es.
+*
+*/
+int utn_esDecimalAvanzada(char cadena [])
+{
+    int i=0;
+    int retorno = 0;
+    int contadorPuntos=0;
+
+    if(cadena!=NULL)
+    {
+        while (cadena[i]!= '\0')
+        {
+            if (cadena[i] == '.')
+            {
+                contadorPuntos++;
+            }
+
+            if ((cadena[i] < '0' || cadena[i] > '9') && (cadena[i] != '.') && (contadorPuntos != 1))
+                break;
+            i++;
+        }
+        if(cadena[i]=='\0')
+        retorno=1;
+    }
+    return retorno;
+}
+
+/** \brief Almacena el numero decimal ingresado (usando fgets en lugar de scanf)  luego de validar el dato como cadena de caracteres.
+* \param float* pResultado Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en *pResultado y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+int utn_getFloatAvanzada(float* pResultado)
+{
+    int retorno = 0;
+    char buffer[16];
+
+    if(pResultado!=NULL)
+    {
+
+        fgets(buffer,sizeof(buffer),stdin);
+        buffer[strlen(buffer)-1]='\0';
+
+        if(utn_esDecimalAvanzada(buffer))
+        {
+            *pResultado = atof(buffer); // VER SI ATOF ESTA OK
+            retorno = 1;
+        }
+    }
+        return retorno;
+}
+
+/** \brief Almacena el numero con decimal ingresado, luego de validar el dato.
+* \param float* pResultado Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en *pResultado y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+
+int utn_getNumeroConDecimalesAvanzada(float* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
+{
+    int retorno;
+    float numero;
+
+        if (pResultado!= NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo && reintentos >= 0)
+        {
+            while(reintentos>0)
+            {
+                printf("%s", mensaje);
+
+                if(utn_getFloatAvanzada(&numero)==1)
+                {
+                    if(numero<=maximo && numero>=minimo)
+                    break;
+                }
+                reintentos--;
+                printf("%s", mensajeError);
+            }
+            if(reintentos==0)
+            {
+                retorno=0;
+            }
+            else
+            {
+                retorno=1;
+                *pResultado = numero;
+            }
+        }
+            return retorno;
+}
+
