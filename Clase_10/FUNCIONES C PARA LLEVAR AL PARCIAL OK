@@ -1,0 +1,112 @@
+FUNCIONES C PARA LLEVAR AL PARCIAL OK
+
+GET TELEFONO AVANZADA OK
+
+PRUEBA 
+
+ if ((utn_getTelefonoAvanzada(telefono, "Ingrese su numero de telefono:", "El numero ingresado  no es valido", 3  ))==0)
+            printf("El numero ingresado no es un telefono valido");
+        else
+            printf("El numero ingresado es valido");
+            printf("%s", telefono);
+
+PROTOTIPOS
+
+int utn_esTelefonoAvanzada (char cadena []); //MODIFICAR ACA PARA QUE CUENTE CELU O DE LIEA
+int utn_getTelefono(char cadena []);
+int utn_getTelefonoAvanzada(char cadena [], char* mensaje, char* mensajeError, int reintentos); // INFORMAR COMO INGRESAR TEL X-XXX-XXXX O XX-XXXX-XXXX y OJO SE INGRESA COMO CADENA!!!! NO HAY Q PONER &
+
+
+/** \brief Verifica si el valor recibido es numerico.
+* \param char cadena de caracteres a ser analizada.
+* \return Devuelve 1 si es numerico y 0 si no lo es.
+*
+*/
+int utn_esTelefonoAvanzada (char cadena [])
+{
+    int i=0, contadorGuiones=0, contadorCaracteres=0;
+    int  retorno;
+
+    while (cadena[i]!= '\0')
+    {
+        contadorCaracteres++; //PARA QUE INGRESEN LA CANTIDAD ADECUADA DE CARACTERES...
+
+        if (cadena[i]== '-')
+        {
+            contadorGuiones++;
+        }
+
+        if ((cadena[i] != '-') && (cadena[i] < '0' || cadena[i] > '9' ))
+            retorno= 0;
+
+        i++;
+    }                           //OJO ACA MODIFICAR LOS CARACTERES SI ES TELEFONO LINEA 10 CARACTERES (YA ESTAN CONTADOS LOS 2 GUIONES), CELU 12 CARACTERES (YA ESTAN CONTADOS LOS 2 GUIONES)
+        if ((contadorGuiones ==2) && (contadorCaracteres ==12) &&(retorno != 0)) // PARA QUE TENGA EN CUENTA UNICAMENTE SI LA CONDICION DE ARRIBA SE CUMPLE, SINO SE FIJA SOLO EN LOS GUIONES.
+            retorno=1;
+        else
+            retorno=0;
+
+        return retorno;
+
+}
+
+/** \brief Almacena el numero ingresado (usando fgets en lugar de scanf)  luego de validar el dato como cadena de caracteres.
+* \param char cadena [] Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en char cadena [] y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+int utn_getTelefono(char cadena [])
+{
+    int retorno = 0;
+    char buffer[20];
+
+    if(cadena!=NULL)
+    {
+
+        fgets(buffer,sizeof(buffer),stdin);
+        buffer[strlen(buffer)-1]='\0';
+
+        if(utn_esTelefonoAvanzada(buffer))
+        {
+            strcpy(cadena, buffer);
+            retorno = 1;
+        }
+    }
+        return retorno;
+}
+
+/** \brief Almacena el telefono ingresado como char, luego de validar el dato.
+* \param char cadena [] Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en char cadena [] y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+
+int utn_getTelefonoAvanzada(char cadena [], char* mensaje, char* mensajeError, int reintentos)
+{
+    int retorno;
+    char telefono[20];
+
+        if (cadena!= NULL && mensaje != NULL && mensajeError != NULL && reintentos >= 0)
+        {
+            while(reintentos>0)
+            {
+                printf("%s", mensaje);
+
+                if(utn_getTelefono(telefono)==1)
+                break;
+
+                reintentos--;
+                printf("%s", mensajeError);
+            }
+            if(reintentos==0)
+            {
+                retorno=0;
+            }
+            else
+            {
+                strcpy(cadena, telefono);
+                retorno=1;
+            }
+        }
+            return retorno;
+}

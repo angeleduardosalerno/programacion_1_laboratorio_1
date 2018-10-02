@@ -1,0 +1,104 @@
+PARA ARREGLAR ES ALFANUMERICO AVANZADA
+
+LEE TODO...LETRAS Y NUMEROS Y AMBOS POR SEPARADO, ESTA OK HAY QUE ARREGLAR LA PRIMERA PARTE...
+
+PRUEBA
+
+    char codigo [20];
+
+
+    if ((utn_getAlfanumericoAvanzada(codigo, "ingrese codigo", "el codigo debe ser alfanumerico", 3))==0)
+            printf("El numero ingresado no es un telefono valido");
+        else
+            printf("El numero ingresado es valido");
+            printf("%s", codigo);
+
+
+
+PROTOTIPOS:
+
+int utn_esAlfanumericoAvanzada (char cadena []);
+int utn_getAlfanumerico(char cadena []);
+int utn_getAlfanumericoAvanzada (char cadena [], char* mensaje, char* mensajeError, int reintentos);
+
+
+FUNCION C:
+
+/** \brief Verifica si el valor recibido es Alfanumerico.
+* \param char cadena de caracteres a ser analizada.
+* \return Devuelve 1 si es Alfanumerico y 0 si no lo es.
+*
+*/
+int utn_esAlfanumericoAvanzada (char cadena [])
+{
+    int i=0;
+
+    while (cadena[i]!= '\0')
+    {
+        if ((cadena[i]!= ' ' ) && (cadena[i] < 'a' || cadena[i] > 'z') && (cadena[i]< 'A' && cadena[i]> 'Z') && (cadena[i] < '0' || cadena[i] > '9' ))
+            return 0;
+        i++;
+    }
+    return 1;
+}
+
+/** \brief Almacena el dato Alfanuemerico ingresado (usando fgets en lugar de scanf)  luego de validar el dato como cadena de caracteres.
+* \param char cadena [] Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en char cadena [] y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+int utn_getAlfanumerico(char cadena [])
+{
+    int retorno = 0;
+    char buffer[20];
+
+    if(cadena!=NULL)
+    {
+        fgets(buffer,sizeof(buffer),stdin);
+        buffer[strlen(buffer)-1]='\0';
+
+        if(utn_esAlfanumerico(buffer))
+        {
+            strcpy(cadena, buffer);
+            retorno = 1;
+        }
+    }
+        return retorno;
+}
+
+/** \brief Almacena el telefono ingresado como char, luego de validar el dato.
+* \param char cadena [] Variable donde se debe almacenar el dato, y donde retorna el mismo en caso de ser correcto.
+* \return Devuelve 1 si pudo guardar el dato en char cadena [] y 0 si no lo pudo guardar por no pasar la validacion.
+*
+*/
+
+int utn_getAlfanumericoAvanzada (char cadena [], char* mensaje, char* mensajeError, int reintentos)
+{
+    int retorno;
+    char alfaNumerico[20];
+
+        if (cadena!= NULL && mensaje != NULL && mensajeError != NULL && reintentos >= 0)
+        {
+            while(reintentos>0)
+            {
+                printf("%s", mensaje);
+
+                if(utn_getAlfanumerico(alfaNumerico)==1)
+                break;
+
+                reintentos--;
+                printf("%s", mensajeError);
+            }
+            if(reintentos==0)
+            {
+                retorno=0;
+            }
+            else
+            {
+                strcpy(cadena, alfaNumerico);
+                retorno=1;
+            }
+        }
+            return retorno;
+}
+
