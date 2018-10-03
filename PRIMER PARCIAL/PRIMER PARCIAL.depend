@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1538524408 source:d:\eduardo angel\primer parcial\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538518217 source:d:\eduardo angel\primer parcial\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+
+1538526083 d:\eduardo angel\primer parcial\primer parcial\validacionesinput.h
+
+1538528377 source:d:\eduardo angel\primer parcial\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+
+1538527591 source:d:\eduardo angel\primer parcial\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538524879 d:\eduardo angel\primer parcial\primer parcial\juegos.h
+
+1538527591 d:\eduardo angel\primer parcial\primer parcial\cliente.h
+
