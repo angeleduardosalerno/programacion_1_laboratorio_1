@@ -17,9 +17,17 @@
 
     int utn_buscarLugarVacioClientes (Clientes arrayClientes[],int longitudArray);
 
-    int addClientes (Clientes arrayClientes[] ,int longitudArray, int auxCodigoCliente, char auxApellidoCliente, char auxNombreCliente, char auxDomicilio, char auxTelefono );
+    int addClientes (Clientes arrayClientes[] ,int longitudArray, int auxCodigoCliente, char auxApellidoCliente [], char auxNombreCliente[], char auxDomicilio[], char auxTelefono[]);
 
+    int findClienteById(Clientes arrayClientes[], int longitudArray, int codigoCliente);
 
+    int removeClientes (Clientes arrayClientes[], int longitudArray, int codigoCliente);
+
+    int sortClientes (Clientes arrayClientes[], int longitudArray);
+
+    int printClientes(Clientes arrayClientes[], int longitudArray);
+
+    int checkCodigoClientes (Clientes arrayClientes[], int longitudArray, int codigoCliente);
 
 
  #endif

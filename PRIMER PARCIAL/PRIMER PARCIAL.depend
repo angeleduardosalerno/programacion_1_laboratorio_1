@@ -33,3 +33,36 @@
 
 1538527591 d:\eduardo angel\primer parcial\primer parcial\cliente.h
 
+1538770898 source:c:\users\angel\desktop\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\primer parcial\validacionesinput.h
+
+1538740920 c:\users\angel\desktop\primer parcial\cliente.h
+
+1538770364 source:c:\users\angel\desktop\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538743467 c:\users\angel\desktop\primer parcial\juegos.h
+
+1538830027 source:c:\users\angel\desktop\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1538829842 source:c:\users\angel\desktop\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+

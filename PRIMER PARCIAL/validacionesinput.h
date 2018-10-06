@@ -1,22 +1,12 @@
 #ifndef VALIDACIONESINPUT_H_INCLUDED
 #define VALIDACIONESINPUT_H_INCLUDED
 
- typedef struct
- {
-     int id;
-     char name[51];
-     char lastName[51];
-     float salary;
-     int sector;
-     int isEmpty;
-
- } Employee;
-
  //  PARA INPUTS DE DATOS CON VALIDACION AVANZADA:
 
  int utn_esNumericoAvanzada (char cadena []); // CONVIERTE EN ARRAY Y LO RECORRE CARACTER POR CARACTER PARA VALIDARLO...
  int utn_getIntAvanzada(int* pResultado); // PARA GUARDAR EL DATO USANDO FGETS EN VES DE SCAN F...
  int utn_getNumeroAvanzada(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos); // PARA OBTENER UN NUMERO VALIDADO, INCLUYE FUNCIONES ANTERIORES...
+ int utn_getNumeroAvanzadaSinMax(int* pResultado, char* mensaje, char* mensajeError, int minimo, int reintentos);
 
  int utn_esDecimalAvanzada (char cadena []);
  int utn_getFloatAvanzada(float* pResultado);
@@ -46,17 +36,5 @@
  int utn_getMail(char cadena []);
  int utn_getMailAvanzada(char cadena [], char* mensaje, char* mensajeError, int reintentos); //RECIBE MAIL COMO CADENA DE CARACTERES.
 
- //FUNCIONES PROPIAS DEL TP
-
- int initEmployees( Employee arrayEmployees [], int longitudArray);
- int utn_buscarLugarVacioEpersona (Employee arrayEmployees [],int longitudArray); //ESTA OK PERO EMPROLIJAR LO DE EL RETORNO..
-
- int addEmployee(Employee arrayEmployees [], int longitudArray, int id, char name[],char lastName[],float salary,int sector);
- int findEmployeeById(Employee arrayEmployees [], int longitudArray, int id);
- int removeEmployee(Employee arrayEmployees [], int longitudArray, int id);
- int sortEmployees(Employee arrayEmployees [], int longitudArray, int orden); // OJO TENGO Q ARREGLAR QUE SOLO LEA LOS LUGARES EN DONDE ESTA EMPTY, PERO AL SER I Y J SE ARMA UN LIO...
- int printEmployees(Employee arrayEmployees [], int longitudArray);
-
- int printSalary(Employee arrayEmployees [], int longitudArray);
 
  #endif
