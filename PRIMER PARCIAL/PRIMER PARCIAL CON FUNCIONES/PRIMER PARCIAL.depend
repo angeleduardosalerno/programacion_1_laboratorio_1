@@ -1,0 +1,96 @@
+# depslib dependency file v1.0
+1538524408 source:d:\eduardo angel\primer parcial\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538518217 source:d:\eduardo angel\primer parcial\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+
+1538526083 d:\eduardo angel\primer parcial\primer parcial\validacionesinput.h
+
+1538528377 source:d:\eduardo angel\primer parcial\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+
+1538527591 source:d:\eduardo angel\primer parcial\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538524879 d:\eduardo angel\primer parcial\primer parcial\juegos.h
+
+1538527591 d:\eduardo angel\primer parcial\primer parcial\cliente.h
+
+1538845420 source:c:\users\angel\desktop\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\primer parcial\validacionesinput.h
+
+1538845420 c:\users\angel\desktop\primer parcial\cliente.h
+
+1538845187 source:c:\users\angel\desktop\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
+1538845187 c:\users\angel\desktop\primer parcial\juegos.h
+
+1538833282 source:c:\users\angel\desktop\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1538840509 source:c:\users\angel\desktop\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
+1538846135 source:c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\validacionesinput.h
+
+1538846135 c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\cliente.h
+
+1538846135 source:c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
+1538846135 c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\juegos.h
+
+1538833282 source:c:\users\angel\desktop\para llevar primer parcial\primer parcial con funciones\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
