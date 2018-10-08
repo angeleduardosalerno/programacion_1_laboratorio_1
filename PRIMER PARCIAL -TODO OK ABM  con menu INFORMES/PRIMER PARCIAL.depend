@@ -1,0 +1,134 @@
+# depslib dependency file v1.0
+1538524408 source:d:\eduardo angel\primer parcial\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538518217 source:d:\eduardo angel\primer parcial\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+
+1538526083 d:\eduardo angel\primer parcial\primer parcial\validacionesinput.h
+
+1538528377 source:d:\eduardo angel\primer parcial\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+
+1538527591 source:d:\eduardo angel\primer parcial\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538524879 d:\eduardo angel\primer parcial\primer parcial\juegos.h
+
+1538527591 d:\eduardo angel\primer parcial\primer parcial\cliente.h
+
+1538833963 source:c:\users\angel\desktop\primer parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\primer parcial\validacionesinput.h
+
+1538740920 c:\users\angel\desktop\primer parcial\cliente.h
+
+1538833966 source:c:\users\angel\desktop\primer parcial\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538743467 c:\users\angel\desktop\primer parcial\juegos.h
+
+1538833282 source:c:\users\angel\desktop\primer parcial\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1538831036 source:c:\users\angel\desktop\primer parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
+1538833963 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\validacionesinput.h
+
+1538740920 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\cliente.h
+
+1538833966 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538743467 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\juegos.h
+
+1538833282 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1538848474 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
+1538833963 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"cliente.h"
+
+1538827795 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\validacionesinput.h
+
+1538740920 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\cliente.h
+
+1538833966 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"juegos.h"
+
+1538743467 c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\juegos.h
+
+1538833282 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1539017521 source:c:\users\angel\desktop\primer parcial\primer parcial -todo ok abm  con menu informes\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validacionesinput.h"
+	"juegos.h"
+	"cliente.h"
+
