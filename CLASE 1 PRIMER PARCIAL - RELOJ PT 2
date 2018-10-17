@@ -1,0 +1,24 @@
+
+CLASE 1 DESPUES DEL PRIMER PARCIAL:
+
+boolean pendulo=false;
+
+long millisAnt=0;
+
+int segundos=0;
+
+void loop()
+{
+	checkPendulo();
+	
+	if (pendulo!= penduloAnt)
+	{
+		segundos ++;
+
+	}
+
+	penduloAnt=pendulo;
+
+
+
+}
