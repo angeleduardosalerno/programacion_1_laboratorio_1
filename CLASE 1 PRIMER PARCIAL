@@ -1,0 +1,21 @@
+
+CLASE 1 DESPUES DEL PRIMER PARCIAL:
+
+boolean pendulo=false;
+
+long millisAnt=0;
+
+boolean checkPendulo ()
+{
+	long millisActual=millis(),
+
+	if (millisActual> millisAnt + 1000)
+	{
+		pendulo=! pendulo;
+		millisAnt= millisAnt +1000;
+
+	}
+
+
+
+}
