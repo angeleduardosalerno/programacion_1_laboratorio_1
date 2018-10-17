@@ -5,16 +5,19 @@ boolean pendulo=false;
 
 long millisAnt=0;
 
-boolean checkPendulo ()
-{
-	long millisActual=millis(),
+int segundos=0;
 
-	if (millisActual> millisAnt + 1000)
+void loop()
+{
+	checkPendulo();
+	
+	if (pendulo!= penduloAnt)
 	{
-		pendulo=! pendulo;
-		millisAnt= millisAnt +1000;
+		segundos ++;
 
 	}
+
+	penduloAnt=pendulo;
 
 
 
