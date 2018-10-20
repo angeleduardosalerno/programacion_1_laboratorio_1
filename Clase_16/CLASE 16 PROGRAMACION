@@ -1,0 +1,146 @@
+CLASE 16 PROGRAMACION
+
+ES IGUAL ARRAY [] ES IGUAL A *ARRAY
+
+OJOOO
+
+NO SE HACE *A
+
+A=5; ESO NO SE HACE ESTA MAL YA QUE LO QUE GUARDA UN PUNTERO ES UNA DIRECCION DE MEMORIA!!!
+
+LO Q PODES HACER ASI ES PONERLE A= LA DIRECCION DE MEMORIA EN HEXA DECIMAL OJOOOOOOO!!!
+
+CUANDO DICE Q GENERALMENTE ES POR QUE SE PUEDE HACER A=NULL!!!
+
+OJOOO!!
+
+
+CLASE DE HOY PUNTERO A CADENA!************************
+
+void mostrarCadena(char* punteroCadena)
+{
+while(*punteroCadena != '\0')
+{
+printf("%c",*punteroCadena);
+punteroCadena++;
+}
+} 
+
+
+OJOOO ACA punteroCadena++; LE SUMA ++ AL DATO Q TIENE GUARDADO punteroCadena;, EL DATO QUE TIENE GUARDADO ES UNA DIRECCION DE MEMORIA POR QUE ES UN PUNTERO...
+
+Y ASI VA RECORRIENDO EL PUNTERO COMO UN ARRAY, VER FOTOS...
+
+SI PONES CHAR CAD (CORCHETES) = "HOY ES SABADO", Y SE LO MANDAS A LA FUNCION void mostrarCadena(char* punteroCadena) , LO QUE SE LE PASA ES LA PRIMERA DIRECCION DE MEMORIA DE LA CADENA, O SEA EN ESTE CASO ES LA H ----DE HOY SABADO!  OJOOO VER FOTOS!!!  OJOOOOOOOOOOO!!!
+
+
+PUNTEROS A ESTRUCTURAS*********************************
+
+LA ESTRUCTURA ES UN TIPO DE DATOS PARTICULAR!!!
+
+POR LO QUE EXISTE PUNTEROS A ESE TIPO DE ESTRUCTURAS!!
+
+EL PUNTO SE REMPLAZA POR EL OPERADOR FLECHA!!! -> ES PARA EL TRABAJO CON PUNTEROS ESTRUCTURA !!! POR QUE PARA ACCEDER AL DATO SE DEBE USAR EL *, 
+SERIA LO MISMO QUE DECIR (*P).EDAD !!!!  OJJJJJJO!!
+DECIR  (*P).EDAD  ES IGUAL A DECIR P->EDAD, ES PARA SIMPLIFICAR ESTO!!!!!
+
+SE CREAN DATOS DEL MISMO TIPO EN ESTRUCTURA Y AL PUNTERO A ESTRUCTRA LE TENES QUE ASIGNAR LA DIRECCION DE MEMORIA DE LA ESTRUCTURA!!!
+
+
+EJEMPLO DADO EN CLASE!!!
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+
+    int edad;
+    char nombre [31];
+} ePersona;
+
+int main()
+{
+    ePersona persona, *p;
+
+    printf("Ingrese Edad: ");
+    scanf("%d", &persona.edad);
+    printf("Ingrese Nombre");
+    scanf("%s", persona.nombre);
+
+    p=&persona;
+
+    printf("%d", p->edad);
+    printf("%s", p->nombre);
+
+
+    return 0;
+}
+
+
+
+EJEMPLO DE PUNTEROS Y VECTORES!!!! EL MISMO HECHO CON VECTORES Y COMO MOSTRAR LO QUE ESTA GUARDADO EN UN PUNTERO!!!
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+
+    int edad;
+    char nombre [31];
+} ePersona;
+
+int main()
+{
+
+    int i;
+    ePersona persona[5], *p;
+
+    for (i=0; i<2; i++)
+    {
+        printf("Ingrese Edad: ");
+        scanf("%d", &persona[i].edad);
+        printf("Ingrese Nombre");
+        scanf("%s", persona[i].nombre);
+
+    }
+
+    p=persona; // ACA SE LE ASIGNA AL PUNTERO LA DIRECCION DE MEMORIA DEL PRIMER ELEMENTO DEL ARRAY....
+
+    for (i=0; i<2; i++)
+    {
+        printf("%d", (p+i)->edad);
+        printf("%s", (p+i)->nombre);
+
+    }
+
+
+
+
+
+
+
+    return 0;
+}
+
+
+*********LA LOGICA DE ACA ES QUE P (EL PUNTERO TIENE GUARDADO ADENTRO UNA DIR DE MEMORIA, AL SUMARLE I O SEA UNO, PASA A LA DIRECCION DE MEMORIA SIGUIENTE Y LA MUESTRA!!!! OJJJJJJJJJOOOO SUPER IMP!!!   ))
+
+ for (i=0; i<2; i++)
+    {
+        printf("%d", (p+i)->edad); (LA LOGICA DE ACA ES QUE P (EL PUNTERO TIENE GUARDADO ADENTRO UNA DIR DE MEMORIA, AL SUMARLE I O SEA UNO, PASA A LA DIRECCION DE MEMORIA SIGUIENTE Y LA MUESTRA!!!! OJJJJJJJJJOOOO SUPER IMP!!!   ))
+        printf("%s", (p+i)->nombre); LA LOGICA DE ACA ES QUE P (EL PUNTERO TIENE GUARDADO ADENTRO UNA DIR DE MEMORIA, AL SUMARLE I O SEA UNO, PASA A LA DIRECCION DE MEMORIA SIGUIENTE Y LA MUESTRA!!!! OJJJJJJJJJOOOO SUPER IMP!!!   ))
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
