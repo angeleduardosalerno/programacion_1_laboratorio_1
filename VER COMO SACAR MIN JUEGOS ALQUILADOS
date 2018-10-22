@@ -1,0 +1,52 @@
+  case 5: // JUEGOS MENOS ALQUILADOS
+
+
+                              /*  for (i=0; i< CANT_JUEGOS ; i++)
+                                {
+                                    if (arrayJuegos[i].isEmpty==0)
+                                    {
+                                        for(j=0; j<CANT_ALQUILERES; j++)
+                                        {
+                                            if (arrayAlquileres[j].isEmpty==0)
+                                            {
+                                                if (arrayJuegos[i].codigoJuego == arrayAlquileres[j].codigoJuegoAlquileres)
+                                                {
+                                                    contadorJuegosAlquilados++;
+
+                                                    if (contadorJuegosAlquilados==1)
+                                                    {
+                                                        maximo=contadorJuegosAlquilados;
+                                                        minimo=contadorJuegosAlquilados;
+                                                        auxArrayMaximo= arrayJuegos[i].codigoJuego;
+                                                        auxArrayMinimo= arrayJuegos[i].codigoJuego;
+                                                    }
+                                                    if (contadorJuegosAlquilados>maximo)
+                                                    {
+                                                        maximo=contadorJuegosAlquilados;
+                                                        auxArrayMaximo= arrayJuegos[i].codigoJuego;
+                                                    }
+                                                    if (contadorJuegosAlquilados<minimo)
+                                                    {
+                                                        minimo=contadorJuegosAlquilados;
+                                                        auxArrayMinimo= arrayJuegos[i].codigoJuego;
+                                                    }
+
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+                                printf( "EL JUEGO MAS ALQUILADO ES:%d CANTIDAD DE VECES ALQUILADO: %d \n", maximo, auxArrayMaximo);
+                                printf( "EL JUEGO MENOS ALQUILADO ES:%d CANTIDAD DE VECES ALQUILADO: %d \n", minimo, auxArrayMinimo);
+
+
+
+                            */
+
+
+
+                            break; // CASO 5 INFORMES
