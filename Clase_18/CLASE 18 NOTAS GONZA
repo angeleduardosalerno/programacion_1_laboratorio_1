@@ -1,0 +1,61 @@
+CLASE 18
+
+Archivos
+
+Dos tipos de archivos : Texto o Binario
+
+Texto = un archivo txt donde todo lo que contiene es posible de leer. Solo es posible almacenar de como texto
+	no se pueden realizar operaciones (Se interpreta como texto). Aunque el archivo si se almacena de forma binaria.
+	Se trabaja caracter a caracter. utilizando el valor ascii pasandolo a binario
+	Por ejemplo el 23, el 2 es igual 50 en ascii y 3 a 51.
+
+binario = al abrir el archivo la informacion se encuentra en binario, salvo algun dato char. Para leerlo
+	  solo es posible de forma binaria.
+
+Un archivo es un puntero el cual se llama File. Para acceder a la memoria es necesario un puntero para poder modificar
+o leer un archivo.
+
+fopen(path,modo)  Es la forma de abrir un archivo - 
+
+El modo es depende del tipo de archivo (binario y texto) cada uno dividideo en dos
+Binario: escritura, lectura;
+Texto: escritura, lectura;
+
+El path es la ubicacion donde se encuentra el archivo.
+
+Cada vez que se abra un archivo hay que estar seguro que sea distinto de null para poder trabajar,
+Si el archivo es de escritura y no se encuentrar, sera creado. Si es de escritura y se abre para escritura
+sera eliminado el contenido.
+Null indicaria si el archivo es correcto o no. Podria ser una ubicacion incorrecta, o un nombre equivocado.
+Si el archivo ya se encuentra en ejecucion, Habria un error al querer ejecutarlo una vez mas.
+
+exit(1) == Hubo un problema
+exit(0) == No hubo errores
+
+fclose(nombre del puntero)
+
+int fwrite ( void * origen , size_t tamaño , size_t cantidad , FILE *arch);
+
+int fread ( void * destino , size_t tamaño , size_t cantidad , FILE *arch );
+
+Rewind - Lleva el indicar de posicion al principio del archivo
+Prototipo: void rewind (FILE* arch);
+
+Si lo que se desea buscar se encuentrar posterior al indicador, nunca va a encontrarlo
+por esto se utiliza la funcion rewind para volver al inicio.
+
+fseek:
+prototipo: int fseek ( FILE *arch , long desplazamiento , int origen);
+
+Permite llevar el indicador a una ubicacion determinada. el desplazamiento es en bytes
+como por ejemplo fseek ( ptr , 20L , SEEK_SET ); 20 bytes hacia la derecha.
+Si lo multiplicamos por -1 en vez de moverse hacia la derecha lo hace de forma inversa.
+
+Se utiliza para MODIFICAR UN DATO o para DAR DE BAJA, al encontrar el dato que se desea modificar el indicador
+va a quedar pasando dicho dato por lo tanto, si se modifica se reemplazaria el dato continuo.
+Se debe retroceder un espacio y ahi es donde se utiliza el *-1 (multiplicacion por menos uno) OJOOOOOOOOOOO!!!!
+
+Si la operación es exitosa devuelve la cantidad de bytes que hay desde el
+commienzo del archivo hasta el lugar en que se encuentra el indicador de posición del archivo ,
+en caso contrario devuelve –1L (-1 como tipo long).
+Ejemplo: Obtener el tamaño de un archivo en bytes.
