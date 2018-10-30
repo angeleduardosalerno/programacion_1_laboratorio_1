@@ -1,0 +1,212 @@
+
+CLASE 19
+
+********PARSER***********
+
+CON UN ARCHIVO DE TEXTO, EL PARSEO TE PERMITE LEER UN ARCHIVO DE TEXTO Y INGRESAR LOS DATOS AUTOMATICAMENTE!!!
+EVITANDOTE INGRESAR TODO A MANO!!!
+
+
+HACER FUNCIONES SET Y GET, DESPUES PARSEARLO...
+
+PARA OBTENER MAYOR ESTABILIDDAD DEL CODIGO...
+
+MEMORIA DINAMICA SIRVE PARA PEDIR LA MEMORIA UNICAMENTE A UTILIZAR..........!
+
+
+FSCANF // F DE FILE Y SCAN F ES IGUAL, SOLO Q LEE DEL ARCHIVO Y NO DEL TECLADO!
+
+SE TIENE Q HACER UNA FUNCION SER POR CADA TIPO DE DATO!
+
+SE TRABAJA CON S, CON CADENAS DE CARACTERES CON F SCANF.........! **********OJOOOOOOOOO!! HAY QUE HACER UNA FUNCION SET Y DENTRO DE ELLA SE HACE LA LOGICA DE CADA TIPO DE DATO!!!
+
+
+DESPUES CADA UNO SE PASA A LA FUNCION SET 
+
+LA MANERA CORRECTA DE LEER UN BUFFER EL CON CADENA Y DESPUES PASAR CADA TIPO DE DATOS CON FUNCIONES ESPECIFICAS!!!
+
+r = fscanf(pFile,"%d,%d,%d,%d\n",&a,&b,&c,&d);
+
+EL PRIMER PARAMETRO DE FSCANF ES UN PUNTERO A FILE
+
+OJOOOO!! ESTA SEPARADO CON COMAS POR QUE EN EL ARCHIVO ESTA SEPARADO CON COMAS, EL Q DETERMINA Q SIMOLO USAR ES EL ARCHIVO""""!!!!
+
+FEOF FUNCION Q DECIA SI SE LLEGO O NO AL FINAL DEL ARCHIVO!
+
+TENES QUE VALIDAR EJ QUE EN EDAD ENTERO NO TE METAN UNA LETRA, POR ESO VOS PASAS TODO A CADENA, DESPUES VALIDAS CARACTER POR CARACTER EN LA FUNCION SET O GET, NO SE CUAL ES, Y DEPUES DE VALIDAR LA PASAS CON ATOI A ENTEROS O DEVOLVES UN ERROR!!! OJOOOOOOOOOOOO!
+
+EL PROBLEMA ESTA CUANDO AL ARCHIVO LO CARGAN A MANO Y DESPUES TE LO PASAN A VOS, LAS FUNCIONES DE VALIDACION DEL PROGRAMA ESTAN OK, PERO VOS TENES Q ANALIZAR EL ARCHIVO SI LOS DATOS QUE TE PASAN ESTA OK!!!!! OJOOOOOOOOOOOOOOOOOOOO!!!!! DICEN Q EN EL FINAL TE PUEDEN PONER UNA LETRA EN EL ARCHIVO Y TE LO HACEN ARREGLAR Y TE DESAPRUEBAN!!!
+
+
+“%[a-z]” o “%[A-Z]” ES UNA EXPRESION REGULAR *********ACEPTA TODOS LOS CARACTERES DE ESE RANGO!!!
+
+ “% [^,] TOMA TODO MENOS LA , !!!! VER EN EL PDF!!
+
+ Para finalizar, se recomienda leer todos los campos como cadena de caracteres, y en un paso
+posterior a su detección y almacenamiento en una variable, se deberán validar y convertir al
+tipo de dato necesario
+
+
+
+per_setId(Persona* p,int id);
+int per_setEdad(Persona* p,int edad);
+int per_setNombre(Persona* p,char* nombre);
+int per_se
+
+SE PONE EL PER_ POR QUE DICHAS FUNCIONES PERTENECEN A LA BIBLIOTECA PERSONA
+
+OJOOOOOOOOOOOOOO!!!1 DE AHORA EN ADELANTE TODAS LAS FUNCIONES PERTENECIENTES A UNA BIBLIOTECA DET TIENEN Q EMPEZAR CON EL NOMBRE DE LA BIBLIOTECA PER_ EJ OJOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+LOS ARCHIVOS .CSV SE RECOMIENDA ABRIRLOS CON UN EDITOR, NO CON EL EXCEL!!!!*****************
+
+LECTURAS EN FALSO!!!!!
+
+OJO VER!!
+
+LA PRIMERA LECTURA NO CUENTA PARA EVITAR EL TITULO!!!!! SINO TE LO CUENTA Y LEE EL TITULO COMO DATOS, HAY DOS MANERAS DE ARREGLARLO USANDO BANDERAS Y UNICAMENTE LEER LA BANDERA 1 CUANDO YA PASO UNA VEZ O COPIAR UNA LECTURA ARRIBA DEL BUCLE DO Y Q LEA UNA VEZ Y DESPUES SIGA...
+
+id,first_name,last_name,age  ***********PARA EVITAR ESTO!!!
+1,Eric,Knight,23
+2,Annie,Castillo,31
+3,Johnny,Dunn,27
+4,Lawrence,Payne,37
+5,Sara,Duncan,20
+6,Alan,Webb,25
+
+
+
+ACA ESTA EN EL EJEMPLO OJO VER:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct S_Persona
+{
+int id;
+char nombre[32];
+char apellido[32];
+int edad;
+};
+
+typedef struct S_Persona Persona;
+
+int parseData(char* fileName,Persona* arrayPersonas, int len);
+
+int main(void)
+{
+Persona personas[8];
+int r,i;
+r = parseData("datos.csv",personas,8);
+
+for(i=0; i<r; i++)
+printf("id:%d nombre:%s apellido:%s edad:%d\n", personas[i].id,
+personas[i].nombre,
+personas[i].apellido,
+personas[i].edad);
+exit(EXIT_SUCCESS);
+
+}
+
+int parseData(char* fileName,Persona* arrayPersonas, int len)
+{
+FILE *pFile;
+int r,i=0;
+char var1[50],var3[50],var2[50],var4[50];
+pFile = fopen(fileName,"r");
+if(pFile == NULL)
+{
+return -1;
+}
+r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4); // ESTA ES LA FORMA MAS SIMPLE, LA DE LA BANDERA NO ME SALE, OJOOOOOOOO!!!!************
+do
+{
+//int bandera=0;
+r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+
+//bandera=1;
+
+if(r==4 /*&& bandera==1*/) // LA BANDERA PARA LEER EN FALSO UNA VEZ Y QUE NO GUARDE EL TITULO Y MUESTRA CUALQUIER COSA! ********************ACAAAA
+{
+arrayPersonas[i].id = atoi(var1);
+strncpy(arrayPersonas[i].nombre,var2,sizeof(arrayPersonas[i].nombre));
+strncpy(arrayPersonas[i].apellido,var3,sizeof(arrayPersonas[i].apellido));
+arrayPersonas[i].edad = atoi(var4);
+i++;
+}
+else
+break;
+}while(!feof(pFile) && i<len);
+fclose(pFile);
+return i;
+}
+
+
+
+PARA ARMAR LOS PROGRAMAS!!!  ******************************************OJOOOOO SUPER IMP!!!!!**********************FORMA CORRECTA DE HACERLO!!!
+
+
+OJOOOOOOOOOOOOO!!! TOMAR EL EJEMPLO DE PEOPLE PARA ARMAR ESTO ASI, EL EJEMPLO ESE NO SE TIENE Q TOMAR DE MODO LITERAL!!!! !!!
+
+
+1) LEER EL ARCHIVO!!!
+
+2) AIGNAR MEMORIA DINAMICA PARA 1 ESTRUCTURA!!!   // CON FUNCION NEW
+
+3) ASIGNAR LO LEIDO DEL ARCHIVO A LA ESTRUCTURA DEL PUNTO 2 // FUNCION SET CON DATOS TOMADOS CON FUNCIONES DE VALIDACION O DESDE UN ARCHIVO!!!
+
+4) REPETIR EL PROCESO HASTA QUE SE HALLA RECORRIDO TODO EL ARCHIVO!!!
+
+5) ARMAR LAS FUNCIONES SET Y ASIGNARLE LOS DATOS A LAS FUNCIONES SET!!!!
+
+
+
+EL EJEMPLO DE PEOPLE ES EL QUE HAY Q TOMAR PARA DESARROLLAR EL PROGRAMA: 1) FUNCION NEW, Y DESPUES LAS FUNCIONES SET Y GET....
+OJOOOOOOOOOOOOO!!! EN ESTE EJEMPLO NO TOMARLO LITERAL, HAY QUE TRABAJARLO Y PENSARLO UNO MISMO!!!!
+OJOOOOOOOOO!!! NO TOMAR ESTE EJEMPLO COMO ESTA OK ES SOLO PARA VER ALGUNOS CONCEPTOS!!!! LA IDEA ES ALCANZAR LO DE ARRIBA!!!!
+
+EJEMPLO DE PEOPLE EJEMPLIFICA LAS FUNCIONES SET Y GET QUE TENES QUE TENER!!!!!
+
+LO IMP ES:  // ESTE ES EL ARRAY DE PUNTEROS DONDE SE VA A ALMACENAR LA DIRECCION DE MEMORIA DE LA DIRECCION DE MEMORIA DONDE ESTAN GUARDADOS LOS DATOS DE LAS DIFERENTES ESTRUCTURAS, DONDE LAS GUARDO LAS FUNCIONES SET AGE!!!!!OJOOOOOO SUPER IMP OJOOO!!!
+
+EN LA FUNCION SET SE CARGAN LOS DATOS!!, LA FUNCION SET ES PARA RESUMIR MEJOR!!!, HACERLO PRIMERO CRUDO Y DESPUES HACER LA FUNCION!!!
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "Person.h"
+
+
+int main()
+{
+    Person* personArray[50]; //-------------------------->
+    // ESTE ES EL ARRAY DE PUNTEROS DONDE SE VA A ALMACENAR LA DIRECCION DE MEMORIA DE LA DIRECCION DE MEMORIA DONDE ESTAN GUARDADOS LOS DATOS DE LAS DIFERENTES ESTRUCTURAS, DONDE LAS GUARDO LAS FUNCIONES SET AGE!!!!!OJOOOOOO SUPER IMP
+    
+
+    int i;
+    for(i = 0; i < 10; i++)
+    {  // OJOOOO ESTE FOR ES PARA BOLUDEAR, LE ASIGNA ESOS I POR QUE SI!!!!
+        personArray[i] = person_new(i,i); // ACA LE ASIGNA LA DIRECCION DE MEMORIA AL ARRAY DE PUNTEROS!!! ************OJOOOOOOOOOOO!!!
+    }
+    for(i = 0; i < 10; i++)
+    {
+        person_setAge(personArray[i],i-4);
+    }
+    for(i = 0; i < 10; i++)
+    {
+        printf("\nAge: %2d",person_getAge(personArray[i]));
+    }
+    scanf(" ");
+    return 0;
+}
+
+
+
+static void initialize(Person* this, int age, int something) // ES UNA ESPECIE DE SET ALGO!!!
+{
+    this->age = age;
+    this->something = something;
+}
+
+
+
