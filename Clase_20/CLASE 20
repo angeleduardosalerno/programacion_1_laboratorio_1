@@ -1,0 +1,28 @@
+CLASE 20
+
+PARA LA LISTA DE PUNTEROS HACE FALTA USAR MALLOC Y REALOC, REALLOC SE USA PARA AGRANDAR LA LISTA CUANDO SE ESTA POR ACABAR EL ESPACIO!!!
+
+
+
+int size = 10;
+int index=0; // ES UN CONTADOR PARA REDIMENSIONAR EL ARRAY SI SE ESTA POR ALCANZAR EL MAXIMO!!!! USANDO MALLOCK Y SIN USAR REALLOCK!!! ES PARA MOSTRAR EL USO DE REALLOCK!!!
+
+
+Persona* lista = (Persona*)malloc(sizeof(Persona)*size);
+do {
+Persona persona;
+preguntarNombre(&persona->nombre);
+persona.edad = preguntarEdad();
+lista[index] = persona;
+index++;
+if(index>=size)
+{
+// incrementamos el tamaño del array
+size+=10;
+lista = realloc(lista,sizeof(Persona)*size);
+}
+}while(preguntarSalir()!='S');
+
+
+CUANDO SE TRABAJA CON REALLOC SE TRABAJA CON UN PUNTERO AUXILIAR AL Q SE LE ASIGNA X SI LA FUNCION DA NULL!!!!
+SI NO DA NULL SE HACE EL REALOCK, SINO SE PIERDE TODO!!!
