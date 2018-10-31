@@ -1,0 +1,103 @@
+CLASE 20
+
+HAY Q TENER EN CUENTA QUE HAY Q LEER EN FALSO CUANDO EL ARCHIVO DE TEXTO TIENE TITULO, CUANDO NO TIENE NO LO HAY QUE HACER!
+
+
+do{
+            //printf("LLEGA2");
+        r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+        if(r==4){
+            arrayPersonas[i].id = atoi(var1); // ESTA PARTE DE ACA SE TIENE Q SUPLANTAR POR LAS FUNCIONES SET, TIENE Q HABER UNA FUNCION SET PARA CADA DATO!!!
+            strncpy(arrayPersonas[i].name,var2,sizeof(arrayPersonas[i].name));
+            strncpy(arrayPersonas[i].lastName,var3,sizeof(arrayPersonas[i].lastName));
+            arrayPersonas[i].age = atoi(var4);
+            i++;
+        }
+
+
+
+    LA FUNCION INICIALIZAR, LA FUNCION INICIALIZAR TOMA COMO PARAMETROS LAS 4 VARIABLES DEL PARSEO, DENTRO DE LA FUNCION INICIALIZAR ESTAN LAS FUNCIONES SET QUE CARGAN LOS DATOS EN LA ESTRUCTURA. AL FINALIZAR LA FUNCION INICIALIZAR UNO YA TIENE LAS ESTRUCTURAS CARGADAS Q SE LEYERON DEL ARCHIVO.
+
+    SE USA DENTRO DEL PARSEO DE LOS DATOS!!!
+
+
+      r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+        if(r==4){
+            //ACA SE USA LA FUNCION INICIALIZAR, LA FUNCION INICIALIZAR TOMA COMO PARAMETROS LAS 4 VARIABLES DEL PARSEO, DENTRO DE LA FUNCION INICIALIZAR ESTAN LAS FUNCIONES SET QUE CARGAN LOS DATOS EN LA ESTRUCTURA. AL FINALIZAR LA FUNCION INICIALIZAR UNO YA TIENE LAS ESTRUCTURAS CARGADAS Q SE LEYERON DEL ARCHIVO.
+            arrayPersonas[i].id = atoi(var1); // ESTA PARTE DE ACA SE TIENE Q SUPLANTAR POR LAS FUNCIONES SET, TIENE Q HABER UNA FUNCION SET PARA CADA DATO!!!
+            strncpy(arrayPersonas[i].name,var2,sizeof(arrayPersonas[i].name)); //SE NECESITA Q LA FUNCION INICIALIZAR TOME LOS PARAMETROS QUE SE LEEN EN LOS ARCHIVOS!!!
+            strncpy(arrayPersonas[i].lastName,var3,sizeof(arrayPersonas[i].lastName));
+            auxEdad= atoi(var4);
+            person_setAge(&arrayPersonas[i], auxEdad); // ASI TIENE QUE ESTAR, ES UN EJEMPLO OK, SE LE PASA CON EL AMPERSAD &arrayPersonas[i].age POR QUE EN ESTE EJEMPLO NO SE TRABAJA CON PUNTEROS SINO CON UN ARRAY DE ESTRUCTURAS OJO!!!
+            i++;                                        //ACA LE PASAS LA DIRECCION DE MEMORIA 0 DEL ARRAY PERSONAS OJO!!!!
+                                                        // LA IDEA ES QUE EL FOR TE CARGUE TODO EL ARRAY !!!
+
+    ESTA PARTE TIENE Q QUEDAR:
+
+    UNA FUNCION INICIALIZAR LAS CUALES RECIBE LOS PARAMETROS DEL *** fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);*** DE ARRIBA, 
+
+    Y DENTRO DE DICHA FUNCION TIENE Q ESTAR LAS FUNCIONES SET DE CADA ELEMENTO Q SE QUIERE LLENAR DE LA ESTRUCTURA : 
+    auxEdad= atoi(var4);
+    person_setAge(&arrayPersonas[i], auxEdad); 
+
+    ENTONCES QUEDARIA 
+
+    r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+        if(r==4)
+        {	
+        	FUNCION INICIALIZAR (var1,var2,var3,var4)
+        }
+
+        FUNCION INICIALIZAR 
+        {
+        	ADENTRO TIENE LOS DISTINTOS SET !!
+
+        }
+
+
+   int parseData( char* fileName, Person* arrayPersonas ){
+    FILE *pFile;
+    int r,i=0;
+    char var1[50],var3[50],var2[50],var4[50];
+    int auxEdad, auxId;
+
+    //Person arrayPersonas[10];
+
+    pFile = fopen(fileName,"r");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    //leo los titulos
+    r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4); // LECTURA EN FALSO
+
+    do{
+            //printf("LLEGA2");
+        r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+        if(r==4){
+            //ACA SE USA LA FUNCION INICIALIZAR, LA FUNCION INICIALIZAR TOMA COMO PARAMETROS LAS 4 VARIABLES DEL PARSEO, DENTRO DE LA FUNCION INICIALIZAR ESTAN LAS FUNCIONES SET QUE CARGAN LOS DATOS EN LA ESTRUCTURA. AL FINALIZAR LA FUNCION INICIALIZAR UNO YA TIENE LAS ESTRUCTURAS CARGADAS Q SE LEYERON DEL ARCHIVO.
+
+            auxId=atoi(var1);
+            person_setId (&arrayPersonas[i], auxId); // ESTA PARTE DE ACA SE TIENE Q SUPLANTAR POR LAS FUNCIONES SET, TIENE Q HABER UNA FUNCION SET PARA CADA DATO!!!
+            strncpy(arrayPersonas[i].name,var2,sizeof(arrayPersonas[i].name)); //SE NECESITA Q LA FUNCION INICIALIZAR TOME LOS PARAMETROS QUE SE LEEN EN LOS ARCHIVOS!!!
+            strncpy(arrayPersonas[i].lastName,var3,sizeof(arrayPersonas[i].lastName));
+            auxEdad= atoi(var4);
+            person_setAge(&arrayPersonas[i], auxEdad); // ASI TIENE QUE ESTAR, ES UN EJEMPLO OK, SE LE PASA CON EL AMPERSAD &arrayPersonas[i].age POR QUE EN ESTE EJEMPLO NO SE TRABAJA CON PUNTEROS SINO CON UN ARRAY DE ESTRUCTURAS OJO!!!
+            i++;                                        //ACA LE PASAS LA DIRECCION DE MEMORIA 0 DEL ARRAY PERSONAS OJO!!!!
+                                                        // LA IDEA ES QUE EL FOR TE CARGUE TODO EL ARRAY !!!
+        }
+        else
+            break;
+    }while( !feof(pFile) && i< 10 );
+
+    fclose(pFile);
+
+    printf("LLEGA...");
+
+    return i;
+}
+
+
+PARA PROBAR SI ANDA OK LO UNICO Q SE HACE ES VER SI TE MUESTRA EL ARCHIVO DE TEXTO!!!
+
+*a=*a * *a
