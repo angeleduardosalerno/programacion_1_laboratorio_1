@@ -1,0 +1,209 @@
+# depslib dependency file v1.0
+1533062952 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/Employee.c
+
+1533063050 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1532354323 /home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/LinkedList.h
+
+1533062926 /home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/Employee.h
+
+1533063080 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1533062952 source:/home/mauro/Descargas/TP3/Linux_64/Employee.c
+
+1533066103 source:/home/mauro/Descargas/TP3/Linux_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1532354323 /home/mauro/Descargas/TP3/Linux_64/LinkedList.h
+
+1533066103 /home/mauro/Descargas/TP3/Linux_64/Employee.h
+
+1533063080 source:/home/mauro/Descargas/TP3/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1533145792 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1533118898 /home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/LinkedList.h
+
+1533118898 /home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Employee.h
+
+1533118898 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Employee.c
+
+1533145890 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541335957 source:c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541332254 c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\linkedlist.h
+
+1541336301 c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\employee.h
+
+1541275208 source:c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1533133022 c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\controller.h
+
+1541333407 source:c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1540758744 source:c:\users\angel\desktop\validaciones. c y .h\biblioteca validaciones input\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+
+1540653033 c:\users\angel\desktop\validaciones. c y .h\biblioteca validaciones input\validacionesinput.h
+
+1541336301 source:c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"LinkedList.h"
+	"Controller.h"
+	"parser.h"
+
+1541333345 c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\parser.h
+
+1541332276 source:c:\users\angel\desktop\tp3 ----borrador para practicar\tp3\win_32\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"LinkedList.h"
+	"Controller.h"
+	"parser.h"
+
+1541258578 source:c:\users\angel\desktop\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"LinkedList.h"
+	"Controller.h"
+	"parser.h"
+
+1541273697 c:\users\angel\desktop\employee.h
+
+1541273602 c:\users\angel\desktop\linkedlist.h
+
+1541417857 source:c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	"validaciones.h"
+
+1541332254 c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\linkedlist.h
+
+1541371007 c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\employee.h
+
+1541417240 source:c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Controller.h"
+	"Employee.h"
+	"validaciones.h"
+
+1541417351 c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\controller.h
+
+1541337031 source:c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+
+1541418045 source:c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"Controller.h"
+	"parser.h"
+	"validaciones.h"
+
+1541333345 c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\parser.h
+
+1541345350 source:c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
+1541345350 c:\users\angel\desktop\tp3 ---- para entregar - con union de biliotecas\tp3\win_32\validaciones.h
+
+1541429731 source:c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	"validaciones.h"
+	"Controller.h"
+
+1541371007 c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\employee.h
+
+1541345350 c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\validaciones.h
+
+1541429603 source:c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"Controller.h"
+	"parser.h"
+	"validaciones.h"
+
+1541429250 c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\controller.h
+
+1541333345 c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\parser.h
+
+1541417240 source:c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Controller.h"
+	"Employee.h"
+	"validaciones.h"
+
+1541337031 source:c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+
+1541345350 source:c:\users\angel\desktop\error 3 - se queda en la redimension del array\tp3\win_32\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
