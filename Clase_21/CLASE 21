@@ -1,0 +1,154 @@
+CLASE 21
+
+LA LISTA DINAMICA ES LA QUE ALMACENA LOS DOBLES PUNTEROS!!!
+
+
+PUNTO H VA EL PROTOTIPO Y LA DOCUMENTACION DOXIGEN!!! OJOOOOOOOOOOO!!!!! Y LA DEFINICION DE LA ESTRUCTURAS!!! QUE ES DISTINTO A EL NOMBRE DE LA VARIABLE DE DICHA ESTRUCTURA!!!
+
+
+EN EL PUNTO C SOLO VA EL DESARROLLO DE LA FUNCION *** VA SOLO ESTO OJOOOOOOOOOOOO!!!!
+ES PARA Q SE VISUALICE EL MODO DE FUNCIONAMIENTO DE LA FUNCION...SE PUEDE NO TENER EL PUNTO C, EL PUNTO A ES EL PUNTO C COMPILADO Y ES INACCESIBLE!!!
+
+
+size = 10;
+index=0;
+lista = (Persona**)malloc(sizeof(Persona*)*size);
+
+
+
+struct S_PeopleList
+{
+int size;
+Persona** lista;
+int index;
+};
+
+ES EL SIZE DE LA LISTA DE PUNTEROS, LA LISTA DE PUNTEROS Y EL INDICE DONDE ESTA GUARDADO CADA PUNTERO!!!! VER COMO ESTA CREADO EN MEMORIA!!!SUPP IMPP!!!
+
+
+
+ES EL TAMAÑO Q LE VAS A AGREGAR A LA LISTA DE PUNTEROS!!!! OJOOOOOOOOOOOO!!! SUP IMPPPPPPPPPPPPPPP!!!
+
+O SEA SIZE ES EL TAMAÑO DE LA LISTA DE PUNTEROS!!!
+
+lista = (Persona**)malloc(sizeof(Persona*)*size);   VER!!!!!
+
+
+void persona_addPersona(Persona* p)
+
+TIENE EL PUNTERO DE PERSONA CON LOS DATOS CARGADOS, SABE EL INDICE DE LA LISTA DE PUNTEROS Y AGREGA EL PUNTERO DE PERSONA A LA LISTA DE PUNTEROS!!!!!!
+
+
+SUPER IMPPPPPPPPPPP!!!!!!!!!!
+
+(Persona* p) YA VIENE DE LA DIRECCION DE MEMORIA 
+
+printf("no hay mas lugar, redefinimos el array\r\n");
+size=size+10;
+lista = (Persona**)realloc(lista,sizeof(Persona*)*size);
+
+
+SE REDEFINE LA LISTA DE PUNTEROS SUMA LO Q TENIAS MAS 10 ESPACIOS DE MEMORIA MAS OJOOO!!!!
+
+
+
+OJOOOOOOOOOO &a==&b   
+
+ESTA BIEN ESCRITO, SON DOS NUMEROS, POR LO QUE SE PUEDE PREGUNTAR X LA IGUALACION!!!!
+NO ES SIEMPRE VERDADERA Y TAMPOCO DEPENDE DEL VALOR DE A Y DE B, ESTO ES SIEMPRE FALSO, YA QUE AMBOS TIENEN SIEMPRE
+DIRECCIONES DE MEMORIA DISTINTAS!!!
+
+
+PARA DECLARAR 2 LISTAS SE USA LA FUNCION INIT!!!!
+
+SI SE NECESITAN PARA 2 LISTAS DIFERENTES DE PERSONAS : EJEMPLO: LISTA DE PERSONAS DOCENTES, LISTA DE PERSONAS ALUMNOS !!!!!
+AMBOS SON PERSONAS GUARDADOS EN PERSONAS DISTINTAS!!!
+
+
+
+struct S_PeopleList
+{
+int size;
+Persona** lista;
+int index;
+};
+typedef struct S_PeopleList PeopleList;
+
+
+typedef struct S_PeopleList PeopleList;
+
+SE DECLARA CADA LISTA CON NOMBRE DISTINTO PARA HACERLAS INDEPENDIENTES LAS LISTAS ENTRE SI!!!
+
+
+
+
+PeopleList* persona_initLista(void)
+{
+PeopleList* pl = (PeopleList*)malloc(sizeof(PeopleList));
+pl->index=0;
+pl->size=2;
+pl->lista = (Persona**)malloc(sizeof(Persona*)*pl->size);
+return pl;
+}
+
+DESPUES DE ESTO LA LISTA TIENE ENCAPSULADA SU TAMAÑO Y SU INDICE!!
+
+if(pl->index>=pl->size)
+{
+	printf("no hay mas lugar, redefinimos el array\r\n");
+	pl->size+=10;
+	pl->lista = (Persona**)realloc(pl->lista,sizeof(Persona*)*pl->size);
+}
+
+pl->size+=10; LA REDIMENSION DE LA LISTA ES DE ACUERDO A LO Q TRABAJAS, COMO LOS ELEMENTOS SE INGRESAN O SE LEEN DE A UNA LINEA NO HAY PROBLEMA, 
+PERO SE DA MEMORIA PARA NO PASARTE MUCHO O QUEDARTE CORTO PARA NO IR ACCEDIENDO TODO EL TIEMPO1!!
+
+
+
+do {
+Persona* persona = persona_newPersona();
+char nombreAux[20];
+preguntarNombre(nombreAux);
+if(persona_setName(persona,nombreAux))
+printf("El nombre no es valido");
+int edadAux = preguntarEdad();
+if(persona_setEdad(persona,edadAux))
+printf("La edad no es válida");
+persona_addPersona(pl,persona);
+}while(preguntarSalir()!='S');
+
+
+----------------------------SUPER IMP!!!!!------------------------------------ LIBERACION DE MEMORIA!!!! ------------------------>
+
+
+NOTA: Es importante aclarar que todos los espacios de memoria reservados deben ser
+liberados, el código se omitió en este material para simplificar la explicación.
+
+SE TIENE QUE LIBERAR POR QUE SE FINALIZO LA EJECUCION DEL PROGRAMA, 
+
+Y SE LIBERA DE ORDEN INVERSO A QUE SE LLENO, 
+
+SE HACE UN FOR LIBERANDO CADA ELEMENTO DE LA LISTA Y DESPUES SE LIBERA LA PERSONA, VER EN LOS EJEMPLOS!!!
+
+LA IDEA ES QUE ESA LISTA YA NO SE VA A USAR MAS, LO GUARDAS EN EL ARCHIVO, O EN UNA BASE DE DATOS!!!
+
+SE TIENE Q LIBERAR TODA LA MEMORIA GUARDADA, UTILIZADA POR EL PROGRAMA!!!!!!!!
+
+SI CERRAS LA APLICACION SE CIERRA TODO SOLO, LO QUE PASA ES Q VOS PODES DEJAR DE USAR UNA APLICACION Y QUE SIGA ABIERTA!!!!
+
+
+
+
+
+TP 3----------------------------------------------------------------->
+
+ESTA LA BIBLIOTECA COMPILADA EN EL PUNTO A, NO HACE FALTA HACER LAS FUNCIONES DE LINKED LIST!!!
+
+EL ARCHIVO BINARIO HAY QUE CREARLO....!!
+
+MIENTRAS SE LEE EL DE TEXTO SE CREA EL BINARIO ES SIMILAR AL PUNTO 9 !!! EL PUNTO 9 ES EL MISMO!!!!
+
+A MEDIDA Q SE LEE EL DE TEXTO SE CREE AL BINARIO!
+
+
+
