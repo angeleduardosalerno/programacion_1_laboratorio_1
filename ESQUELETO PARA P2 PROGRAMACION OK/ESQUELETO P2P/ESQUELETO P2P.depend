@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1543244126 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+	"Controller.h"
+
+1543243226 c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\linkedlist.h
+
+1541798824 c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\employee.h
+
+1540653034 c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\validacionesinput.h
+
+1541812474 c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\parser.h
+
+1541794243 c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\controller.h
+
+1541798521 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+
+1543243270 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+
+1543244126 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+
+1543244219 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+	"Controller.h"
+
+1541528156 source:c:\users\angel\desktop\para segundo parcial programacion\esqueleto para p2 programacion ok\esqueleto p2p\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"LinkedList.h"
+	"Employee.h"
+
