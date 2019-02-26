@@ -1,0 +1,92 @@
+
+*******NOTAS 2DO PARCIAL PROGRAMACION********
+
+
+1)  ARCHIVOS: SI EL ARCHIVO NO EXISTE HAY QUE CREARLO CON WRITE, PREGUNTANDO ANTES SI SE LO PUDO LEER PARA NO BORRARLO.
+
+	FPRINTF ES PARA TEXTO!!!! ****************************
+
+ PARA BINARIO FWRITE!!!!
+ BINARIO EL ARCHIVO .DAT O .BIN, TIENE QUE SER DISTINTO AL DE TEXTO
+
+ ******EN BINARIO SE USA PARA LEER FREAD Y PARA ESCRIBIR SE USA FWRITE
+
+ EL DE TEXTO ES .CSV ****** ESTO NO ES UNA PLANILLA DE EXCEL, SE ABRE EN DIFERENTES EDITORES OJO!!!!!!!
+ O SEA EN EL EXCEL NO TE VA A FIGURAR GUARDADO!!!! OJOOOOOOOOOOOOOOO!!!
+ CHEQUEARLO EN EL ARCHIVOOO!!!!
+ 
+********EN TEXTO SE LEE CON FSCANF (SIMIL PARSEO) ok ***********************
+*******Y SE ESCRIBE CON FPRINTF 
+
+
+***********PARA CREAR EL ARCHIVO SINO EXISTE ************
+
+
+	void main (void)
+	{
+	FILE *parch;
+	//Se abre en modo lectura
+	if((parch=fopen("banco.dat","rb"))==NULL)
+	{
+	//Si el modo anterior dio error el archivo
+	if((parch=fopen("banco.dat","wb"))==NULL)
+	{
+	printf("\nEl archivo no puede ser abierto");
+	exit (1);
+	}
+	//no existe, por lo tanto se crea
+	fclose(parch);
+	}
+	}
+
+
+
+*********ACA ESTA APLICADO EN EL TP3 CHEQUEAR SI ESTA OK************
+
+
+int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
+{
+    char var1[50], var2[50] ,var3[50] ,var4[50]; // VARIABLES AUX EN Q SE ALMACENA LOS DATOS DEL ARCHIVO LEIDOS COMO STRING
+    int readLine;
+
+    FILE *pFileBinary;
+
+    if((pFileBinary=fopen("BINARY-DATA","rb"))==NULL) // SE ABRE EL BINARIO EN LECTURA, SI ES NULL ES POR QUE NO EXISTE Y SE CREA
+    {
+        if((pFileBinary=fopen("BINARY-DATA","wb"))==NULL) // SI ES IGUAL A NULL O SEA LA PRIMERA VEZ SI NO EXISTE EL ARCHIVO DEVUELVE NULL, ENTONCES LO CREA
+        {
+            printf("\nEl archivo no puede ser abierto");
+            fclose(pFile);
+            return -1;
+        }
+
+        // SE CREO EL ARCHIVO BINARIO
+    }
+
+    readLine = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+
+    do {
+            readLine = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+
+            if (readLine == 4)
+            {
+                Employee* e= employee_newParametros(var1, var2, var3, var4);
+
+                fwrite(e, sizeof(Employee), 1, pFileBinary); //ESCRIBE EL ARCHIVO DE TEXTO PFILE EN EL BINARIO PBINARY FILE
+                ll_add(pArrayListEmployee, e);
+            }
+            else
+            {
+                printf("LINEA CON CARACTERES ERRONEOS.\n");
+                fclose(pFileBinary);
+                fclose(pFile);
+                return -1;
+            }
+
+    } while (!feof(pFile));
+
+    fclose(pFileBinary);
+    fclose(pFile);
+    return 0;
+
+}

@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1551213887 source:c:\users\angel\desktop\para final abm febrero\para final febrero\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+	"Controller.h"
+
+1549804766 c:\users\angel\desktop\para final abm febrero\para final febrero\linkedlist.h
+
+1551214772 c:\users\angel\desktop\para final abm febrero\para final febrero\employee.h
+
+1540653034 c:\users\angel\desktop\para final abm febrero\para final febrero\validacionesinput.h
+
+1551180186 c:\users\angel\desktop\para final abm febrero\para final febrero\parser.h
+
+1551186369 c:\users\angel\desktop\para final abm febrero\para final febrero\controller.h
+
+1551214837 source:c:\users\angel\desktop\para final abm febrero\para final febrero\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+
+1551214772 source:c:\users\angel\desktop\para final abm febrero\para final febrero\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+
+1551215033 source:c:\users\angel\desktop\para final abm febrero\para final febrero\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+
+1551182755 source:c:\users\angel\desktop\para final abm febrero\para final febrero\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"validacionesinput.h"
+	"parser.h"
+	"Controller.h"
+	<string.h>
+
+1551009332 source:c:\users\angel\desktop\para final abm febrero\para final febrero\validacionesinput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionesinput.h"
+	"LinkedList.h"
+	"Employee.h"
+

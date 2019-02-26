@@ -1,0 +1,646 @@
+FINAL LAB 1
+
+FUNCION SORT ALAN:
+
+
+
+int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
+{
+    int returnAux =-1;
+
+    void* aux;
+    if(this != NULL && pFunc != NULL && (order == 0  || order == 1))
+    {
+        if(this!=NULL)
+        {
+            for(int i=0; i< ll_len(this)-1; i++) // RECORRES LA LISTA -1!!! -------> 2 FOR PARA COMPARAR! UNO CON I, EL 2DO CON J!
+            {
+                for(int j=i+1; j <ll_len(this) ; j++ )
+                {
+                    if(order)
+                    {
+                        if( pFunc( ll_get(this, i), ll_get(this, j)) >0) // ACA COMPARA ENTRE LOS 2 PERO UNICAMENTE USANDO LAS 2 FUNCIONES! VER QUE DEVUELVE CADA UNA! ES UNA VALIDACION SI DA MAYOR A CERO, O SEA 1 ES Q ES MAYOR!
+                        {
+                            aux = ll_get(this, i); // GUARDA EL I EN UN AUX
+                            ll_set(this, i, ll_get(this, j)); // PASA EL J A DONDE ESTABA EL I
+                            ll_set(this, j, aux); // GUARDA EL I EN LA J
+                        }
+                    }
+                    else
+                    {
+                        if( pFunc( ll_get(this, i), ll_get(this, j))  < 0) // DEVUELVE -1 SI ES MENOR!!!
+                        {
+                            aux = ll_get(this, i);
+                            ll_set(this, i, ll_get(this, j));
+                            ll_set(this, j, aux);
+                        }
+                    }
+                }
+            }
+            returnAux=0;
+        }
+    }
+    return returnAux;
+
+}
+
+
+
+
+FUNCION SORT!***********************************
+
+/** \brief Ordenar empleados
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_sortEmployee(LinkedList* pArrayListEmployee)
+{
+    int opcion,retorno,orden;
+    if(pArrayListEmployee == NULL){
+        printf("No hay datos en la lista.\n");
+    }
+    else
+    {
+        opcion=menu2(&orden);
+        switch(opcion){
+        case 1:
+            ll_sort(pArrayListEmployee,employee_id,orden);
+            retorno=1;
+            break;
+        case 2:
+            ll_sort(pArrayListEmployee,employee_nombre,orden);
+            retorno=1;
+            break;
+        case 3:
+            ll_sort(pArrayListEmployee,employee_horasTrabajadas,orden);
+            retorno=1;
+            break;
+        case 4:
+            ll_sort(pArrayListEmployee,employee_sueldo,orden);
+            retorno=1;
+            break;
+        }
+    }
+    return retorno;
+}
+
+
+
+FUNCIONES PARAMETRO PARA HACER LAS COMPARACIONES EN SORT!*****************************
+
+int employee_id(void* employeeA, void* employeeB)
+{
+    int retorno,idAux1,idAux2;
+    
+    if(employeeA!=NULL&&employeeA!=NULL){
+        employee_getId(((Employee*)employeeA),&idAux1);
+        employee_getId(((Employee*)employeeB),&idAux2);
+        if(idAux1>idAux2){
+            retorno=1;
+        }
+        else if(idAux1<idAux2){
+            retorno=-1;
+        }
+        else{
+           retorno=0;
+        }
+    }
+    return retorno;
+}
+int employee_nombre(void* employeeA, void* employeeB)
+{
+    char nombre[2][128];
+    if(employeeA!=NULL&&employeeA!=NULL){
+        employee_getNombre(((Employee*)employeeA),nombre[0]);
+        employee_getNombre(((Employee*)employeeB),nombre[1]);
+    }
+    return strcmp(nombre[0],nombre[1]);
+}
+
+int employee_horasTrabajadas(void* employeeA, void* employeeB)
+{
+    int retorno=0,horasAux1,horasAux2;
+    if(employeeA!=NULL&&employeeB!=NULL){
+        employee_getHorasTrabajadas(((Employee*)employeeA),&horasAux1);
+        employee_getHorasTrabajadas(((Employee*)employeeB),&horasAux2);
+        if(horasAux1>horasAux2){
+            retorno = 1;
+        }
+        else if(horasAux1<horasAux2){
+            retorno = -1;
+        }
+        else{
+           retorno = 0;
+        }
+    }
+    return retorno;
+}
+int employee_sueldo(void* employeeA,void* employeeB)
+{
+    int retorno=0,sueldoAux1,sueldoAux2;
+    if(employeeA!=NULL&&employeeB!=NULL){
+        employee_getSueldo(((Employee*)employeeA),&sueldoAux1);
+        employee_getSueldo(((Employee*)employeeB),&sueldoAux2);
+        if(sueldoAux1>sueldoAux2){
+            retorno = 1;
+        }
+        else if(sueldoAux1<sueldoAux2){
+            retorno = -1;
+        }
+        else{
+           retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+FUNCION POP:
+
+
+/** \brief Elimina el elemento de la posicion indicada y retorna su puntero
+ *
+ * \param this LinkedList* Puntero a la lista
+ * \param nodeIndex int Ubicacion del elemento eliminar
+ * \return void* Retorna    (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
+                            (pElement) Si funciono correctamente
+ *
+ */
+void* ll_pop(LinkedList* this,int index)
+{
+    void* returnAux = NULL;
+
+    if(this!=NULL)
+    {
+        if(ll_len(this)>0)
+        {
+            if(index>=0&&index<(ll_len(this)))
+            {
+                Node* pNode = (Node*)malloc(sizeof(Node));
+                Node* previousNode = (Node*)malloc(sizeof(Node));
+                Node* nextNode = (Node*)malloc(sizeof(Node));
+                pNode=getNode(this,index);
+                if(pNode==this->pFirstNode)
+                {
+                    this->size--;
+                    returnAux=pNode->pElement;
+                }
+                if(pNode!=this->pFirstNode)
+                {
+                    if(pNode->pNextNode!=NULL)
+                    {
+                        previousNode=getNode(this,index-1);
+                        nextNode=getNode(this,index+1);
+                        previousNode->pNextNode=nextNode;
+                    }
+                    else
+                    {
+                        previousNode=getNode(this,index-1);
+                        previousNode->pNextNode=NULL;
+                    }
+                    this->size--;
+                    returnAux=pNode->pElement;
+                }
+            }
+        }
+    }
+    return returnAux;
+}
+
+
+
+
+
+FUNCION SAVE AS TEXT: GUARDA USA FPRINTF Y YO USE FSCAN F VER CUAL ESTA Ok!!!!
+
+/** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
+{
+    FILE* pFile;
+    pFile = fopen(path, "w");
+    int retorno=0;
+    Employee* p;
+    int i;
+    if(path!=NULL&&pFile!=NULL&&pArrayListEmployee!=NULL){
+        
+        fprintf(pFile,"%s,%s,%s,%s\n","id","nombre","horasTrabajadas","sueldo");
+        
+        for(i=0; i<ll_len(pArrayListEmployee);i++){
+            p = (Employee*)ll_get(pArrayListEmployee, i);
+            fprintf(pFile,"%d,%s,%d,%d\n",p->id,p->nombre,p->horasTrabajadas,p->sueldo);
+        }
+        
+        if(i==ll_len(pArrayListEmployee)){
+            retorno=1;
+        }
+    }
+    fclose(pFile);
+    return retorno;
+
+
+    FUNCION SAVE AS TEXT MARTIN: --------------> TAMBIEN USA FPRINTF Y NO FSCANF !!
+
+
+
+    /** \brief Parsea los datos de los empleados para guardar en data.csv (modo texto).
+ *
+ * \param FILE* pFile
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int parser_SaveToText(FILE* pFile , LinkedList* pArrayListEmployee)
+{
+    int retorno = -1;
+    Employee* auxEmployee;
+    int len;
+    int i;
+    int auxId;
+    char auxNombre[1000];
+    int auxHorasTrabajadas;
+    int auxSueldo;
+
+    if(pFile != NULL && pArrayListEmployee != NULL)
+    {
+        len = ll_len(pArrayListEmployee);
+
+        for(i=0;i<len;i++)
+        {
+            auxEmployee = ll_get(pArrayListEmployee,i);
+            employee_getAll(auxEmployee,auxNombre,&auxHorasTrabajadas,&auxSueldo,&auxId);
+            fprintf(pFile,"%d,%s,%d,%d\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+
+
+FUNCION SORT CALI:
+
+void* employee_sort(void *pEmployee1, void *pEmployee2) {
+
+    Employee *employee1 = pEmployee1;
+    Employee *employee2 = pEmployee2;
+
+    
+    if (strcmp(employee1->name, employee2->name) > 0)
+        return employee1;
+    else
+        
+        return employee2;
+
+
+}
+
+
+
+
+FUNCION ADD NODE ALAN---------------------------------------------------------------------------------
+
+/** \brief Agrega y enlaza un nuevo nodo a la lista
+ *
+ * \param this LinkedList* Puntero a la lista
+ * \param nodeIndex int Ubicacion donde se agregara el nuevo nodo
+ * \param pElement void* Puntero al elemento a ser contenido por el nuevo nodo
+ * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
+                        ( 0) Si funciono correctamente
+ *
+ */
+static int addNode(LinkedList* this, int nodeIndex,void* pElement)
+{
+    int returnAux = -1;
+    if(this != NULL)
+    {
+        Node* newNode=(Node*)malloc(sizeof(Node));
+        Node* previousNode=(Node*)malloc(sizeof(Node));
+        Node* nextNode=(Node*)malloc(sizeof(Node));
+        if(nodeIndex == 0)
+        {
+            if(ll_len(this) == 0)
+            {
+                newNode->pElement = pElement;
+                newNode->pNextNode = NULL;
+            }
+            else
+            {
+                nextNode = this->pFirstNode;
+                newNode->pElement = pElement;
+                newNode->pNextNode = nextNode;
+            }
+            this->pFirstNode = newNode;
+        }
+        else
+        {
+            previousNode = getNode(this, nodeIndex-1);
+            if(nodeIndex == ll_len(this))
+            {
+                newNode->pElement = pElement;
+                newNode->pNextNode = NULL;
+                previousNode->pNextNode = newNode;
+            }
+            else
+            {
+                nextNode = getNode(this, nodeIndex + 1);
+                newNode->pElement = pElement;
+                newNode->pNextNode = nextNode;
+                previousNode->pNextNode = newNode;
+            }
+//            mostrarEmployee((Employee*)(previousNode->pElement));
+//            mostrarEmployee((Employee*)(newNode->pElement));
+//            system("pause");
+        }
+
+        this->size++;
+        returnAux = 0;
+    }
+    return returnAux;
+}
+
+
+
+
+
+
+
+
+
+
+****************MAIN MAP-----------*****   1)**************************
+
+
+if(!(controller_ll_map(listaEmpleados)))
+                    {
+                        printf("\nProblemas para calcular el sueldo\n\n");
+                        system("pause");
+                    }else{
+                        printf("\nSueldo Cargado info.csv creado...\n\n");
+                        system("pause");
+                    }
+                    break;
+
+
+******************CONTROLLER MAP
+
+
+int controller_ll_map(LinkedList* pArrayListEmployee)  2)*********************************
+{
+    int retorno=0;
+    if(pArrayListEmployee == NULL){
+        printf("No hay datos en la lista.\n");
+    }
+    else
+    {
+        LinkedList* newLinker=ll_clone(pArrayListEmployee);      // USA CLONE, CREA UNA COPIA DE LA LISTA ELEMENTO POR ELEMENTO Y DEVUELVE LA POSICION DE MEMORIA DONDE ESTA GUARDADA!!!
+
+        if(newLinker!=NULL){
+
+            ll_map(newLinker,employee_sueldoCalculo);            // LE PASA LA LISTA CLONADA Y LA FUNCION PARAMETRO CALCULAR EL SUELDO!
+
+            if(controller_saveAsText("info.csv",newLinker))       // CREA EL ARCHIVO DE TEXTO CON EL SUELDO CARGADO, 
+                retorno=1;
+
+            ll_deleteLinkedList(newLinker); // BORRA LA LISTA CLONADA!
+        }
+    }
+    return retorno;
+}
+
+
+FUNCION MAP:***************************************************************** 3)--------------------------
+
+
+int ll_map(LinkedList* this, int (*pFunc)(void*)){
+    int returnAux =-1;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        if(this!=NULL)
+        {
+            returnAux=0;
+            for(int i=0; i< ll_len(this); i++)
+            {
+                pFunc( ll_get(this,i)); // EL GET LE DEVUELVE CADA PUNTERO A EMPLOYEE DONDE ESTAN GUARDADOS LOS DATOS!
+            }
+        }
+    }
+    return returnAux;
+}
+
+
+
+
+
+FUNCION PARAMETRO CALCULAR SUELDO!!******************************************** 4)*************************************-
+
+int employee_sueldoCalculo(void* employeeA) // ESTE ES EL PUNTERO AL EMPLOYEE QUE TE DEVUELVE LA FUNCION GET!!
+{
+    int retorno=0,horAux1=0,sueldo=1,sueldo2=1,horAux2=0;
+
+    if(employeeA!=NULL){
+        
+        employee_getHorasTrabajadas(((Employee*)employeeA),&horAux1); // HACE UN GET DE HT!! Y LO GUARDA EN EL AUXILIAR Y DESPUES CALCULA EL SUELDO!
+
+        if(horAux1<=176){
+            sueldo=180*horAux1;
+            employee_setSueldo(((Employee*)employeeA),sueldo); // y con eso hace los set!!!!
+            retorno = 1;
+        }
+        else if(horAux1>=176&&horAux1<=208){
+            sueldo=180*176;
+            horAux1=horAux1-176;
+            sueldo2=270*horAux1;
+            sueldo=sueldo+sueldo2;
+            employee_setSueldo(((Employee*)employeeA),sueldo); // y con eso hace los set!!!!
+            retorno = 1;
+        }
+        else{
+            sueldo=180*176;
+            sueldo2=270*32;
+            sueldo=sueldo+sueldo2;
+            horAux2=horAux1-208;
+            sueldo2=360*horAux2;
+            sueldo=sueldo+sueldo2;
+            employee_setSueldo(((Employee*)employeeA),sueldo); // y con eso hace los set!!!!
+            retorno = 1;
+        }
+    }
+    return retorno;
+}
+
+
+/*
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
+{
+    int ok=0;
+    if(this!=NULL&&horasTrabajadas!=NULL){
+        *horasTrabajadas=this->horasTrabajadas;
+        ok=1;
+    }
+    return ok;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************************************************
+FUNCION GET NODE!
+
+/** \brief  Obtiene un nodo de la lista
+ *
+ * \param this LinkedList* Puntero a la lista
+ * \param index int Indice del nodo a obtener
+ * \return Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
+                        (pElement) Si funciono correctamente
+ *
+ */
+static Node* getNode(LinkedList* this, int nodeIndex)
+{
+    Node* pNode = NULL;
+    if(this!=NULL)
+    {
+        if(nodeIndex>=0&&nodeIndex<ll_len(this))
+        {
+            pNode=(Node*)malloc(sizeof(Node));
+            for(int i=0; i<=nodeIndex; i++)
+            {
+                if(i==0)
+                {
+                    pNode=this->pFirstNode;
+                }
+                else
+                {
+                    pNode=pNode->pNextNode;
+                }
+            }
+        }
+    }
+    return pNode;
+}
+
+
+
+
+
+FUNCION FILTER!!**********************************************************
+
+
+LinkedList* ll_filter(LinkedList* this, void (*pFunc)(LinkedList*,void*,int x)) // 2 PARAMETROS, LA LISTA Y UNA FUNCION Q TIENE 3 PARAM, LA LISTA PUNTERO A VOID Y UN ENTERO
+{
+    void* pElement; // EL PUNTERO A VOID RETORNA LA DIR DE MEMORIA DE DONDE ESTA GUARDADO UN EMPLOYEE
+    
+    int nivel;
+
+    LinkedList* listaFiltrada; // SE CREA UNA NUEVA LL LIST!
+
+    listaFiltrada = ll_newLinkedList();
+
+    if(listaFiltrada != NULL)
+    {
+        printf("Ingrese el nivel de Vendedor a filtrar 0-Junior, 1-Estandard, 2-Experto: ");
+        getInt(&nivel);
+        
+        for(int i = 0; i < ll_len(this);i++)
+        {
+           pElement = ll_get(this, i);
+
+           pFunc(listaFiltrada,pElement,nivel); // LE PASAS LA FUNCION! POR CADA ELEMENTO!
+        }
+    }
+    controller_ListEmployee(listaFiltrada);
+    return  listaFiltrada;
+}
+
+
+FUNCION PARAMETRO!!************
+
+
+void nivelEmpleado (LinkedList* listaFiltrada,void* emp,int x){
+    
+    Employee* punteroE;
+    punteroE = emp;
+    
+    if (punteroE != NULL){
+        
+        if (x==0){
+            if (strcmp(punteroE->nivel,"Junior")==0){
+                ll_add(listaFiltrada,punteroE);
+            }
+        }
+        if (x==1){
+            if (strcmp(punteroE->nivel,"Estandard")==0){
+                ll_add(listaFiltrada,punteroE);
+            }
+        }
+        if (x==2){
+            if (strcmp(punteroE->nivel,"Experto")==0){
+                ll_add(listaFiltrada,punteroE);
+            }
+        }
+    }
+}
+
+
+
+void controller_asignarNivel(int numero,char* nivel){
+
+    switch (numero){
+    case 0:
+        strcpy(nivel,"Junior");
+    break;
+    case 1:
+        strcpy(nivel,"Estandard");
+    break;
+    case 2:
+        strcpy(nivel,"Experto");
+    break;
+    }
+}
+
+
+
+void calcularComision(void* emp){
+    Employee* punteroE;
+    punteroE = emp;
+    if (punteroE != NULL){
+        if (strcmp(punteroE->nivel,"Junior")==0){
+            punteroE->valorCobrar = (punteroE->monto * 2)/100;
+        }
+        if ((strcmp(punteroE->nivel,"Estandard")==0) ||
+            (strcmp(punteroE->nivel,"Experto")==0)){
+            if (punteroE->cantidadProductos < 100){
+                punteroE->valorCobrar = (punteroE->monto * 3.5)/100;
+            }
+            else if (punteroE->cantidadProductos >= 100){
+                punteroE->valorCobrar = (punteroE->monto * 5)/100;
+            }
+        }
+    }
+}
